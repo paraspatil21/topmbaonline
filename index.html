@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TopMBAOnline.in - India's Leading Platform for Comparing Online MBA Courses</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+</head>
+<body class="font-sans bg-white text-gray-800">
+    <!-- Header will be injected by header.js -->
+    <header id="header-container"></header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section with Banners/Slider -->
+        <section id="hero-section" class="relative overflow-hidden">
+            <!-- Banner 1 -->
+            <div class="hero-banner active" data-banner="1">
+                <div class="banner-content">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">India's Leading Platform for Comparing Online Courses</h1>
+                    <p class="text-xl mb-6">Compare Thousands of Courses from Top Universities</p>
+                    <div class="flex flex-wrap gap-4 mb-8">
+                        <div class="stat-box">
+                            <i class="fas fa-users text-2xl mb-2"></i>
+                            <h3 class="text-2xl font-bold">Trusted by Millions</h3>
+                            <p class="text-gray-600">of Learners</p>
+                        </div>
+                        <div class="stat-box">
+                            <i class="fas fa-graduation-cap text-2xl mb-2"></i>
+                            <h3 class="text-2xl font-bold">Exclusive</h3>
+                            <p class="text-gray-600">Scholarships & Discounts</p>
+                        </div>
+                    </div>
+                    <div class="search-box">
+                        <input type="text" id="course-search" placeholder="What course are you looking for?" class="search-input">
+                        <button class="search-btn"><i class="fas fa-search"></i> Search</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Banner 2 -->
+            <div class="hero-banner" data-banner="2">
+                <div class="banner-content">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Elevate Your Career with an MBA</h1>
+                    <p class="text-xl mb-6">Flexible online MBA blending practical skills and leadership training. Study anywhere, gain insights, and expand your network.</p>
+                    <a href="#featured-degrees" class="cta-btn">Explore MBA Programs</a>
+                </div>
+            </div>
+            
+            <!-- Banner 3 -->
+            <div class="hero-banner" data-banner="3">
+                <div class="banner-content">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Best Courses for Business Professionals</h1>
+                    <p class="text-xl mb-6">Enhance your business skills with top-rated management and leadership courses.</p>
+                    <a href="#mba-specializations" class="cta-btn">View MBA Specializations</a>
+                </div>
+            </div>
+            
+            <!-- Banner 4 -->
+            <div class="hero-banner" data-banner="4">
+                <div class="banner-content">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Exclusive Discounts on Top Courses</h1>
+                    <p class="text-xl mb-6">Save up to 30% on select courses with limited-time discounts.</p>
+                    <a href="#mba-courses" class="cta-btn">Claim Your Discount</a>
+                </div>
+            </div>
+            
+            <!-- Banner Navigation Dots -->
+            <div class="banner-dots">
+                <span class="dot active" data-target="1"></span>
+                <span class="dot" data-target="2"></span>
+                <span class="dot" data-target="3"></span>
+                <span class="dot" data-target="4"></span>
+            </div>
+            
+            <!-- Banner Navigation Arrows -->
+            <button class="banner-nav prev" id="prev-banner"><i class="fas fa-chevron-left"></i></button>
+            <button class="banner-nav next" id="next-banner"><i class="fas fa-chevron-right"></i></button>
+        </section>
+
+        <!-- Top Universities Section -->
+        <section id="top-universities" class="section-padding bg-gradient-to-r from-blue-50 to-blue-100">
+            <div class="container">
+                <h2 class="section-title">Compare Courses from Top Providers</h2>
+                <div class="university-grid">
+                    <!-- Universities will be populated by JavaScript -->
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3 class="stat-number">2750+</h3>
+                        <p class="stat-text">Subjects to choose from</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-number">850+</h3>
+                        <p class="stat-text">UGC Approved Online degrees</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-number">500+</h3>
+                        <p class="stat-text">Universities & Companies</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Online Degrees - MBA ONLY -->
+        <section id="featured-degrees" class="section-padding">
+            <div class="container">
+                <h2 class="section-title">MBA Specializations</h2>
+                <div class="degrees-grid" id="mba-specializations">
+                    <!-- MBA Specializations will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- University & Course Matrix -->
+        <section id="university-course-matrix" class="section-padding bg-gray-50">
+            <div class="container">
+                <h2 class="section-title">Top Universities & Their Popular MBA Specializations</h2>
+                <div class="matrix-container">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section id="why-us" class="section-padding">
+            <div class="container">
+                <h2 class="section-title">Why We're the Best Choice?</h2>
+                <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">Explore top online MBA courses from leading institutions with personalized recommendations, exclusive scholarships, and flexible learning options tailored to your schedule.</p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3 class="feature-title">Top Course Comparison</h3>
+                        <p class="feature-description">Access India's leading online course comparison platform for effortless discovery and comparison of top MBA providers.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h3 class="feature-title">Personalized Guidance</h3>
+                        <p class="feature-description">Receive tailored career mentoring and unbiased MBA program recommendations to help you make informed decisions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h3 class="feature-title">Exclusive Benefits</h3>
+                        <p class="feature-description">Enjoy exclusive scholarships, special offers, and no-cost EMI options to make MBA education more accessible.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3 class="feature-title">Comprehensive Support</h3>
+                        <p class="feature-description">Benefit from extensive post-enrollment support, including community access and placement assistance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Course Categories with Charts Section -->
+        <section id="course-categories" class="section-padding">
+            <div class="container">
+                <h2 class="section-title">Explore MBA Trends & Insights</h2>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                    <!-- Left Column: Pie Chart & Stats -->
+                    <div class="space-y-6">
+                        <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-xl font-bold text-gray-800">MBA Specialization Distribution</h3>
+                                <span class="text-sm text-blue-600 font-medium">2024 Data</span>
+                            </div>
+                            
+                            <div class="relative h-64">
+                                <canvas id="courseCategoriesChart"></canvas>
+                            </div>
+                            
+                            <div class="mt-6 grid grid-cols-2 gap-4">
+                                <div class="bg-gradient-to-r from-blue-50 to-blue-100 p-4 rounded-xl">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="text-sm text-gray-600">Total MBA Programs</p>
+                                            <p class="text-2xl font-bold text-gray-800">850+</p>
+                                        </div>
+                                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-graduation-cap text-white"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-gradient-to-r from-yellow-50 to-yellow-100 p-4 rounded-xl">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="text-sm text-gray-600">New This Month</p>
+                                            <p class="text-2xl font-bold text-gray-800">24+</p>
+                                        </div>
+                                        <div class="w-12 h-12 bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-plus text-white"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- MBA Specialization Badges -->
+                        <div class="bg-gradient-to-r from-gray-50 to-white rounded-2xl shadow-lg p-6 border border-gray-100">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Top MBA Specializations</h3>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium flex items-center gap-2">
+                                    <i class="fas fa-chart-line"></i> Business Analytics
+                                </span>
+                                <span class="px-4 py-2 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium flex items-center gap-2">
+                                    <i class="fas fa-shopping-cart"></i> Digital Marketing
+                                </span>
+                                <span class="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium flex items-center gap-2">
+                                    <i class="fas fa-users"></i> HR Management
+                                </span>
+                                <span class="px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium flex items-center gap-2">
+                                    <i class="fas fa-hospital"></i> Hospital Admin
+                                </span>
+                                <span class="px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-medium flex items-center gap-2">
+                                    <i class="fas fa-oil-well"></i> Petroleum Mgmt
+                                </span>
+                                <span class="px-4 py-2 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium flex items-center gap-2">
+                                    <i class="fas fa-tractor"></i> Agribusiness
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Column: Line Chart & Detailed Stats -->
+                    <div class="space-y-6">
+                        <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-xl font-bold text-gray-800">MBA Enrollment Trend</h3>
+                                <div class="flex gap-2">
+                                    <button class="text-sm px-3 py-1 bg-blue-100 text-blue-700 rounded-full font-medium monthly-btn">Monthly</button>
+                                    <button class="text-sm px-3 py-1 bg-gray-100 text-gray-700 rounded-full font-medium yearly-btn">Yearly</button>
+                                </div>
+                            </div>
+                            
+                            <div class="h-64">
+                                <canvas id="enrollmentTrendChart"></canvas>
+                            </div>
+                            
+                            <div class="mt-6 flex items-center justify-between text-sm text-gray-600">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                                    <span>MBA Programs</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                    <span>Business Courses</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                    <span>All Management</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Detailed Stats Cards -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-4 rounded-xl">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-sm opacity-90">Top MBA Specialization</p>
+                                        <p class="text-xl font-bold mt-1">Business Analytics</p>
+                                        <p class="text-xs mt-1 opacity-90">45% of enrollments</p>
+                                    </div>
+                                    <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                                        <i class="fas fa-chart-line text-xl"></i>
+                                    </div>
+                                </div>
+                                <div class="mt-3 flex items-center gap-1">
+                                    <i class="fas fa-arrow-up text-xs"></i>
+                                    <span class="text-xs">↑ 18% this month</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gradient-to-br from-yellow-500 to-yellow-600 text-white p-4 rounded-xl">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-sm opacity-90">Fastest Growing</p>
+                                        <p class="text-xl font-bold mt-1">Digital Marketing</p>
+                                        <p class="text-xs mt-1 opacity-90">32% of enrollments</p>
+                                    </div>
+                                    <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                                        <i class="fas fa-bullhorn text-xl"></i>
+                                    </div>
+                                </div>
+                                <div class="mt-3 flex items-center gap-1">
+                                    <i class="fas fa-arrow-up text-xs"></i>
+                                    <span class="text-xs">↑ 24% this month</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Quick Stats -->
+                        <div class="bg-gradient-to-r from-gray-50 to-white rounded-2xl shadow-lg p-6 border border-gray-100">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">MBA Quick Stats</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-users text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-2xl font-bold text-gray-800">85K+</p>
+                                            <p class="text-sm text-gray-600">MBA Students</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-graduation-cap text-yellow-600"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-2xl font-bold text-gray-800">92%</p>
+                                            <p class="text-sm text-gray-600">Placement Rate</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MBA Courses Section -->
+        <section id="mba-courses" class="section-padding bg-gradient-to-r from-blue-50 to-blue-100">
+            <div class="container">
+                <h2 class="section-title">Get Started with MBA</h2>
+                <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">Explore top-rated MBA programs and specializations tailored to your career goals.</p>
+                <div class="genai-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="beginner">Beginner</button>
+                    <button class="filter-btn" data-filter="top-rated">Top Rated</button>
+                    <button class="filter-btn" data-filter="popular">Popular</button>
+                </div>
+                <div class="genai-courses-grid">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section id="testimonials" class="section-padding bg-gray-50">
+            <div class="container">
+                <h2 class="section-title">What Our MBA Students Say</h2>
+                <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Hear directly from our successful MBA graduates.</p>
+                <div class="testimonials-slider">
+                    <!-- Testimonials will be populated by JavaScript -->
+                    <div class="testimonial-controls">
+                        <button class="testimonial-nav prev" id="prev-testimonial"><i class="fas fa-chevron-left"></i></button>
+                        <div class="testimonial-dots"></div>
+                        <button class="testimonial-nav next" id="next-testimonial"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Placement Assistance -->
+        <section id="placement-assistance" class="section-padding">
+            <div class="container">
+                <div class="placement-content">
+                    <div class="placement-text">
+                        <h2 class="section-title text-left">MBA Programs with Placement Assistance</h2>
+                        <p class="text-gray-600 mb-6">We excel by providing premier MBA programs, each complemented with comprehensive placement support to ensure you achieve your career goals.</p>
+                        <div class="placement-features">
+                            <div class="placement-feature">
+                                <i class="fas fa-briefcase text-2xl text-blue-600"></i>
+                                <span>100% Placement Support</span>
+                            </div>
+                            <div class="placement-feature">
+                                <i class="fas fa-file-alt text-2xl text-blue-600"></i>
+                                <span>Resume & LinkedIn Building</span>
+                            </div>
+                            <div class="placement-feature">
+                                <i class="fas fa-users text-2xl text-blue-600"></i>
+                                <span>Mock Interviews</span>
+                            </div>
+                        </div>
+                        <a href="#featured-degrees" class="cta-btn mt-6">Explore MBA Programs</a>
+                    </div>
+                    <div class="placement-image">
+                        <!-- Illustration or image placeholder -->
+                        <div class="illustration">
+                            <i class="fas fa-user-tie text-8xl text-blue-400"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blogs Section -->
+        <section id="blogs" class="section-padding bg-gradient-to-r from-blue-50 to-blue-100">
+            <div class="container">
+                <h2 class="section-title">MBA Insights & Blogs</h2>
+                <div class="blogs-grid">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section id="newsletter" class="section-padding bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+            <div class="container">
+                <div class="newsletter-content">
+                    <h2 class="text-3xl font-bold mb-4">Subscribe to our MBA Newsletter</h2>
+                    <p class="mb-6 opacity-90">Get weekly updates on top MBA programs, scholarships, and career opportunities.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" class="newsletter-input">
+                        <button class="newsletter-btn">Subscribe</button>
+                    </div>
+                    <p class="text-sm mt-4 opacity-80">Stay updated with the latest MBA trends, admission tips, and exclusive offers.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer will be injected by footer.js -->
+    <footer id="footer-container"></footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/header.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
