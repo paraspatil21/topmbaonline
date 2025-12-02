@@ -8,8 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeFilterButtons();
     initializeTestimonialSlider();
     initializeCounters();
-    initializeCharts();
-    initializeChartFilters();
+    initializeCharts(); // Removed initializeChartFilters()
     
     // Search functionality
     initializeSearch();
@@ -91,30 +90,57 @@ function initializeData() {
     const mbaCourses = [
         {
             id: 1,
-            title: 'Strategic Management Fundamentals',
-            provider: 'IIM Bangalore',
-            level: 'Beginner',
-            duration: '12 Weeks',
-            price: 'Free course',
-            tags: ['beginner', 'top-rated']
+            title: 'MBA in Business Analytics',
+            provider: 'NMIMS University',
+            level: 'Advanced',
+            duration: '24 Months',
+            price: '₹2,50,000',
+            tags: ['top-rated', 'popular']
         },
         {
             id: 2,
-            title: 'Digital Marketing Specialization',
-            provider: 'Google & Coursera',
+            title: 'MBA in Digital Marketing',
+            provider: 'VIT University',
             level: 'Intermediate',
-            duration: '6 Months',
-            price: '₹2,699/month',
+            duration: '18 Months',
+            price: '₹1,80,000',
             tags: ['beginner', 'popular']
         },
         {
             id: 3,
-            title: 'Business Analytics with Python',
-            provider: 'IBM & edX',
+            title: 'Executive MBA',
+            provider: 'IIM Ahmedabad',
             level: 'Advanced',
-            duration: '4 Months',
-            price: '₹3,499/month',
+            duration: '24 Months',
+            price: '₹4,50,000',
             tags: ['top-rated']
+        },
+        {
+            id: 4,
+            title: 'MBA in Hospital Administration',
+            provider: 'NMIMS University',
+            level: 'Intermediate',
+            duration: '18 Months',
+            price: '₹2,20,000',
+            tags: ['beginner']
+        },
+        {
+            id: 5,
+            title: 'MBA in Finance',
+            provider: 'VIT University',
+            level: 'Advanced',
+            duration: '24 Months',
+            price: '₹2,00,000',
+            tags: ['top-rated', 'popular']
+        },
+        {
+            id: 6,
+            title: 'MBA in Agribusiness',
+            provider: 'Jain University',
+            level: 'Intermediate',
+            duration: '18 Months',
+            price: '₹1,50,000',
+            tags: ['beginner']
         }
     ];
 
@@ -511,14 +537,15 @@ function initializeCharts() {
     const categoriesCtx = document.getElementById('courseCategoriesChart');
     if (categoriesCtx) {
         const categoriesData = {
-            labels: ['Business Analytics', 'Digital Marketing', 'HR Management', 'Hospital Admin', 'Others'],
+            labels: ['Business Analytics', 'Digital Marketing', 'HR Management', 'Hospital Admin', 'Finance', 'Others'],
             datasets: [{
-                data: [35, 25, 15, 10, 15],
+                data: [30, 25, 15, 10, 12, 8],
                 backgroundColor: [
                     '#0ea5e9', // Blue
                     '#f59e0b', // Yellow
                     '#10b981', // Green
                     '#8b5cf6', // Purple
+                    '#ef4444', // Red
                     '#94a3b8'  // Gray
                 ],
                 borderWidth: 3,
@@ -562,157 +589,6 @@ function initializeCharts() {
             }
         });
     }
-    
-    // Enrollment Trend Chart (Line) - Updated for MBA
-    const trendCtx = document.getElementById('enrollmentTrendChart');
-    if (trendCtx) {
-        const trendData = {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-            datasets: [
-                {
-                    label: 'MBA Programs',
-                    data: [150, 180, 220, 250, 290, 330, 380],
-                    borderColor: '#0ea5e9',
-                    backgroundColor: 'rgba(14, 165, 233, 0.1)',
-                    borderWidth: 3,
-                    fill: true,
-                    tension: 0.4,
-                    pointBackgroundColor: '#0ea5e9',
-                    pointBorderColor: '#ffffff',
-                    pointBorderWidth: 2,
-                    pointRadius: 5,
-                    pointHoverRadius: 7
-                },
-                {
-                    label: 'Business Courses',
-                    data: [100, 130, 160, 190, 220, 260, 310],
-                    borderColor: '#f59e0b',
-                    backgroundColor: 'rgba(245, 158, 11, 0.1)',
-                    borderWidth: 3,
-                    fill: true,
-                    tension: 0.4,
-                    pointBackgroundColor: '#f59e0b',
-                    pointBorderColor: '#ffffff',
-                    pointBorderWidth: 2,
-                    pointRadius: 5,
-                    pointHoverRadius: 7
-                },
-                {
-                    label: 'All Management',
-                    data: [250, 290, 340, 380, 420, 470, 520],
-                    borderColor: '#10b981',
-                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                    borderWidth: 3,
-                    fill: true,
-                    tension: 0.4,
-                    pointBackgroundColor: '#10b981',
-                    pointBorderColor: '#ffffff',
-                    pointBorderWidth: 2,
-                    pointRadius: 5,
-                    pointHoverRadius: 7
-                }
-            ]
-        };
-        
-        new Chart(trendCtx, {
-            type: 'line',
-            data: trendData,
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    },
-                    tooltip: {
-                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                        titleColor: '#ffffff',
-                        bodyColor: '#ffffff',
-                        borderColor: '#0ea5e9',
-                        borderWidth: 1,
-                        cornerRadius: 8,
-                        mode: 'index',
-                        intersect: false
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: {
-                            color: 'rgba(0, 0, 0, 0.05)'
-                        },
-                        ticks: {
-                            callback: function(value) {
-                                return value;
-                            }
-                        }
-                    },
-                    x: {
-                        grid: {
-                            color: 'rgba(0, 0, 0, 0.05)'
-                        }
-                    }
-                },
-                interaction: {
-                    intersect: false,
-                    mode: 'index'
-                },
-                animation: {
-                    duration: 1000,
-                    easing: 'easeOutQuart'
-                }
-            }
-        });
-    }
-}
-
-function initializeChartFilters() {
-    const monthlyBtn = document.querySelector('.monthly-btn');
-    const yearlyBtn = document.querySelector('.yearly-btn');
-    
-    if (monthlyBtn && yearlyBtn) {
-        monthlyBtn.addEventListener('click', function() {
-            this.classList.remove('bg-gray-100', 'text-gray-700');
-            this.classList.add('bg-blue-100', 'text-blue-700');
-            
-            yearlyBtn.classList.remove('bg-blue-100', 'text-blue-700');
-            yearlyBtn.classList.add('bg-gray-100', 'text-gray-700');
-            
-            updateTrendChart('monthly');
-        });
-        
-        yearlyBtn.addEventListener('click', function() {
-            this.classList.remove('bg-gray-100', 'text-gray-700');
-            this.classList.add('bg-blue-100', 'text-blue-700');
-            
-            monthlyBtn.classList.remove('bg-blue-100', 'text-blue-700');
-            monthlyBtn.classList.add('bg-gray-100', 'text-gray-700');
-            
-            updateTrendChart('yearly');
-        });
-    }
-}
-
-function updateTrendChart(period) {
-    const trendCtx = document.getElementById('enrollmentTrendChart');
-    if (!trendCtx) return;
-    
-    const chart = Chart.getChart(trendCtx);
-    if (!chart) return;
-    
-    if (period === 'yearly') {
-        chart.data.labels = ['2020', '2021', '2022', '2023', '2024'];
-        chart.data.datasets[0].data = [200, 280, 350, 420, 500];
-        chart.data.datasets[1].data = [150, 220, 290, 350, 420];
-        chart.data.datasets[2].data = [350, 500, 650, 770, 920];
-    } else {
-        chart.data.labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'];
-        chart.data.datasets[0].data = [150, 180, 220, 250, 290, 330, 380];
-        chart.data.datasets[1].data = [100, 130, 160, 190, 220, 260, 310];
-        chart.data.datasets[2].data = [250, 290, 340, 380, 420, 470, 520];
-    }
-    
-    chart.update();
 }
 
 // Initialize search functionality
@@ -822,7 +698,6 @@ function renderMBASpecializations() {
     
     attachCompareEventListeners();
 }
-
 function renderMBACourses() {
     const coursesGrid = document.querySelector('.genai-courses-grid');
     if (!coursesGrid || !window.appData.mbaCourses) return;
@@ -831,30 +706,45 @@ function renderMBACourses() {
     
     window.appData.mbaCourses.forEach(course => {
         const courseCard = document.createElement('div');
-        courseCard.className = 'certification-card fade-in';
+        courseCard.className = 'mba-square-card fade-in';
+        
+        // Get university logo class
+        const logoClass = getUniversityLogoClass(course.provider);
+        const logoText = getUniversityLogoText(course.provider);
+        
         courseCard.innerHTML = `
-            <div class="certification-header">
-                <div class="certification-logo">
-                    <i class="fas fa-graduation-cap"></i>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg">${course.title}</h4>
-                    <p class="text-gray-600">${course.provider}</p>
+            <div class="mba-card-header">
+                <h3 class="mba-card-title">${course.title}</h3>
+                <div class="mba-card-provider">
+                    <span class="university-logo ${logoClass}">${logoText}</span>
+                    ${course.provider}
                 </div>
             </div>
-            <div class="mb-4">
-                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded mr-2">
-                    <i class="fas fa-user-graduate mr-1"></i>${course.level}
-                </span>
-                <span class="inline-block bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">
-                    <i class="far fa-clock mr-1"></i>${course.duration}
-                </span>
-            </div>
-            <div class="flex justify-between items-center">
-                <div class="text-lg font-bold ${course.price.includes('Free') ? 'text-green-600' : 'text-gray-800'}">
-                    ${course.price}
+            <div class="mba-card-body">
+                <div class="mba-card-badges">
+                    <span class="mba-badge level">
+                        <i class="fas fa-user-graduate"></i>
+                        ${course.level}
+                    </span>
+                    <span class="mba-badge duration">
+                        <i class="far fa-clock"></i>
+                        ${course.duration}
+                    </span>
+                    ${course.tags.map(tag => `
+                        <span class="mba-badge tag">
+                            ${tag === 'top-rated' ? '<i class="fas fa-star"></i> Top Rated' : ''}
+                            ${tag === 'popular' ? '<i class="fas fa-fire"></i> Popular' : ''}
+                            ${tag === 'beginner' ? '<i class="fas fa-seedling"></i> Beginner' : ''}
+                        </span>
+                    `).join('')}
                 </div>
-                <button class="compare-btn" data-course-id="${course.id}">
+                <div class="mba-card-price">
+                    <div class="mba-price">${course.price}</div>
+                    <div class="mba-price-note">Complete Program Fee</div>
+                </div>
+            </div>
+            <div class="mba-card-footer">
+                <button class="mba-compare-btn" data-course-id="${course.id}">
                     <i class="fas fa-plus"></i> Compare
                 </button>
             </div>
@@ -865,77 +755,121 @@ function renderMBACourses() {
     attachCompareEventListeners();
 }
 
-function renderTestimonials() {
-    // Handled by initializeTestimonialSlider
-}
-
-function renderBlogs() {
-    const blogsGrid = document.querySelector('.blogs-grid');
-    if (!blogsGrid || !window.appData.blogs) return;
+function renderFilteredMBACourses(courses) {
+    const coursesGrid = document.querySelector('.genai-courses-grid');
     
-    blogsGrid.innerHTML = '';
+    if (!coursesGrid) return;
     
-    window.appData.blogs.forEach(blog => {
-        const blogCard = document.createElement('article');
-        blogCard.className = 'blog-card fade-in';
-        blogCard.innerHTML = `
-            <div class="blog-image">
-                <i class="fas fa-newspaper"></i>
-            </div>
-            <div class="blog-content">
-                <div class="blog-meta">
-                    <span>${blog.date}</span>
-                    <span>${blog.readTime}</span>
+    coursesGrid.innerHTML = '';
+    
+    if (courses.length === 0) {
+        coursesGrid.innerHTML = `
+            <div class="col-span-3 text-center py-12">
+                <div class="bg-white rounded-2xl p-8 shadow-lg max-w-md mx-auto">
+                    <i class="fas fa-search text-5xl text-gray-300 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-700 mb-2">No courses found</h3>
+                    <p class="text-gray-500 mb-6">Try a different filter or browse all MBA programs.</p>
+                    <button class="filter-btn active px-6 py-3 rounded-lg" data-filter="all">
+                        Show All Programs
+                    </button>
                 </div>
-                <h3 class="text-xl font-bold mb-2">${blog.title}</h3>
-                <p class="text-gray-600">${blog.description}</p>
-                <a href="#" class="inline-block mt-4 text-blue-600 font-medium hover:text-blue-800">
-                    Read More <i class="fas fa-arrow-right ml-1"></i>
-                </a>
             </div>
         `;
-        blogsGrid.appendChild(blogCard);
+        
+        // Re-attach event listener to the "Show All Programs" button
+        const showAllBtn = coursesGrid.querySelector('.filter-btn');
+        if (showAllBtn) {
+            showAllBtn.addEventListener('click', () => {
+                const allBtn = document.querySelector('.genai-filters .filter-btn[data-filter="all"]');
+                if (allBtn) {
+                    allBtn.click();
+                }
+            });
+        }
+        return;
+    }
+    
+    courses.forEach(course => {
+        const courseCard = document.createElement('div');
+        courseCard.className = 'mba-square-card fade-in';
+        
+        // Get university logo class
+        const logoClass = getUniversityLogoClass(course.provider);
+        const logoText = getUniversityLogoText(course.provider);
+        
+        courseCard.innerHTML = `
+            <div class="mba-card-header">
+                <h3 class="mba-card-title">${course.title}</h3>
+                <div class="mba-card-provider">
+                    <span class="university-logo ${logoClass}">${logoText}</span>
+                    ${course.provider}
+                </div>
+            </div>
+            <div class="mba-card-body">
+                <div class="mba-card-badges">
+                    <span class="mba-badge level">
+                        <i class="fas fa-user-graduate"></i>
+                        ${course.level}
+                    </span>
+                    <span class="mba-badge duration">
+                        <i class="far fa-clock"></i>
+                        ${course.duration}
+                    </span>
+                    ${course.tags.map(tag => `
+                        <span class="mba-badge tag">
+                            ${tag === 'top-rated' ? '<i class="fas fa-star"></i> Top Rated' : ''}
+                            ${tag === 'popular' ? '<i class="fas fa-fire"></i> Popular' : ''}
+                            ${tag === 'beginner' ? '<i class="fas fa-seedling"></i> Beginner' : ''}
+                        </span>
+                    `).join('')}
+                </div>
+                <div class="mba-card-price">
+                    <div class="mba-price">${course.price}</div>
+                    <div class="mba-price-note">Complete Program Fee</div>
+                </div>
+            </div>
+            <div class="mba-card-footer">
+                <button class="mba-compare-btn" data-course-id="${course.id}">
+                    <i class="fas fa-plus"></i> Compare
+                </button>
+            </div>
+        `;
+        coursesGrid.appendChild(courseCard);
     });
+    
+    attachCompareEventListeners();
 }
 
-function renderUniversityCourseMatrix() {
-    const matrixContainer = document.querySelector('.matrix-container');
-    if (!matrixContainer || !window.appData.universityCourses) return;
-    
-    const table = document.createElement('table');
-    table.className = 'matrix-table';
-    table.innerHTML = `
-        <thead>
-            <tr>
-                <th>University</th>
-                <th>MBA in Digital Marketing</th>
-                <th>MBA in Hospital Administration</th>
-                <th>MBA in Agribusiness</th>
-                <th>MBA in Business Analytics</th>
-            </tr>
-        </thead>
-        <tbody>
-            ${window.appData.universityCourses.map(university => `
-                <tr>
-                    <td><strong>${university.university}</strong></td>
-                    <td>${university.courses[0] ? '<i class="fas fa-check text-green-500"></i>' : '<i class="fas fa-times text-red-500"></i>'}</td>
-                    <td>${university.courses[1] ? '<i class="fas fa-check text-green-500"></i>' : '<i class="fas fa-times text-red-500"></i>'}</td>
-                    <td>${university.courses[2] ? '<i class="fas fa-check text-green-500"></i>' : '<i class="fas fa-times text-red-500"></i>'}</td>
-                    <td>${university.courses[3] ? '<i class="fas fa-check text-green-500"></i>' : '<i class="fas fa-times text-red-500"></i>'}</td>
-                </tr>
-            `).join('')}
-        </tbody>
-    `;
-    
-    matrixContainer.innerHTML = '';
-    matrixContainer.appendChild(table);
+// Helper functions for university logos
+function getUniversityLogoClass(provider) {
+    if (provider.includes('NMIMS')) return 'nmims';
+    if (provider.includes('VIT')) return 'vit';
+    if (provider.includes('IIM')) return 'iim';
+    if (provider.includes('Jain')) return 'jain';
+    return '';
 }
 
-// Compare functionality
+function getUniversityLogoText(provider) {
+    if (provider.includes('NMIMS')) return 'NM';
+    if (provider.includes('VIT')) return 'VI';
+    if (provider.includes('IIM')) return 'II';
+    if (provider.includes('Jain')) return 'JN';
+    return provider.substring(0, 2);
+}
+
+// Update the attachCompareEventListeners function to work with new button class
 function attachCompareEventListeners() {
-    const compareButtons = document.querySelectorAll('.compare-btn');
+    const compareButtons = document.querySelectorAll('.mba-compare-btn, .compare-btn');
     
     compareButtons.forEach(button => {
+        // Remove existing event listeners to avoid duplicates
+        button.replaceWith(button.cloneNode(true));
+    });
+    
+    // Re-select the buttons
+    const newCompareButtons = document.querySelectorAll('.mba-compare-btn, .compare-btn');
+    
+    newCompareButtons.forEach(button => {
         button.addEventListener('click', function() {
             const courseId = this.getAttribute('data-course-id') || this.getAttribute('data-specialization-id');
             const courseType = this.getAttribute('data-course-id') ? 'course' : 'specialization';
@@ -944,14 +878,14 @@ function attachCompareEventListeners() {
             this.classList.toggle('compared');
             
             if (this.classList.contains('compared')) {
-                this.innerHTML = '<i class="fas fa-check"></i> Added';
-                this.style.background = 'linear-gradient(to right, #10b981, #34d399)';
+                this.innerHTML = '<i class="fas fa-check"></i> Added to Compare';
+                this.style.background = 'linear-gradient(135deg, #10b981, #059669)';
                 
                 // Show notification
                 showNotification('Program added to compare list!', 'success');
             } else {
                 this.innerHTML = courseType === 'course' ? '<i class="fas fa-plus"></i> Compare' : '<i class="fas fa-search"></i> Explore Programs';
-                this.style.background = '';
+                this.style.background = 'linear-gradient(135deg, var(--primary), var(--primary-dark))';
                 
                 // Show notification
                 showNotification('Program removed from compare list.', 'info');
@@ -1000,3 +934,25 @@ window.addEventListener('load', function() {
         card.classList.add('fade-in');
     });
 });
+
+// Initialize animated counters (missing function)
+function initializeAnimatedCounters() {
+    const animatedNumbers = document.querySelectorAll('.animated-number');
+    
+    animatedNumbers.forEach(stat => {
+        const target = parseInt(stat.textContent.replace(/\D/g, ''));
+        const suffix = stat.textContent.replace(/[0-9]/g, '');
+        
+        let current = 0;
+        const increment = target / 50;
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                stat.textContent = target + suffix;
+                clearInterval(timer);
+            } else {
+                stat.textContent = Math.floor(current) + suffix;
+            }
+        }, 30);
+    });
+}

@@ -9,23 +9,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="flex items-center justify-between">
                         <!-- Logo -->
                         <div class="flex items-center space-x-2">
-                            <div class="w-10 h-10 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg flex items-center justify-center">
+                            <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
                                 <span class="text-white font-bold text-xl">TM</span>
                             </div>
                             <a href="/" class="text-2xl font-bold text-gray-800">
-                                <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">TopMBA</span>Online.in
+                                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700">TopMBA</span>Online.in
                             </a>
                         </div>
                         
                         <!-- Desktop Navigation -->
                         <div class="hidden md:flex items-center space-x-8">
-                            <a href="/" class="text-gray-700 hover:text-purple-600 font-medium">Home</a>
-                            <a href="#featured-degrees" class="text-gray-700 hover:text-purple-600 font-medium">Programs</a>
-                            <a href="#top-universities" class="text-gray-700 hover:text-purple-600 font-medium">Universities</a>
-                            <a href="#why-us" class="text-gray-700 hover:text-purple-600 font-medium">Why Us</a>
-                            <a href="#testimonials" class="text-gray-700 hover:text-purple-600 font-medium">Testimonials</a>
-                            <a href="#blogs" class="text-gray-700 hover:text-purple-600 font-medium">Blog</a>
-                            <button class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-lg font-medium hover:shadow-lg transition-all">
+                            <a href="/" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                            <a href="#featured-degrees" class="text-gray-700 hover:text-blue-600 font-medium">Programs</a>
+                            <a href="#top-universities" class="text-gray-700 hover:text-blue-600 font-medium">Universities</a>
+                            <a href="#why-us" class="text-gray-700 hover:text-blue-600 font-medium">Why Us</a>
+                            <a href="#testimonials" class="text-gray-700 hover:text-blue-600 font-medium">Testimonials</a>
+                            <a href="#blogs" class="text-gray-700 hover:text-blue-600 font-medium">Blog</a>
+                            <button class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2 rounded-lg font-medium hover:shadow-lg transition-all hover:from-blue-700 hover:to-blue-800">
                                 Sign Up
                             </button>
                         </div>
@@ -39,13 +39,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     <!-- Mobile Menu -->
                     <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t pt-4">
                         <div class="flex flex-col space-y-4">
-                            <a href="/" class="text-gray-700 hover:text-purple-600 font-medium py-2">Home</a>
-                            <a href="#featured-degrees" class="text-gray-700 hover:text-purple-600 font-medium py-2">Programs</a>
-                            <a href="#top-universities" class="text-gray-700 hover:text-purple-600 font-medium py-2">Universities</a>
-                            <a href="#why-us" class="text-gray-700 hover:text-purple-600 font-medium py-2">Why Us</a>
-                            <a href="#testimonials" class="text-gray-700 hover:text-purple-600 font-medium py-2">Testimonials</a>
-                            <a href="#blogs" class="text-gray-700 hover:text-purple-600 font-medium py-2">Blog</a>
-                            <button class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-lg font-medium w-full">
+                            <a href="/" class="text-gray-700 hover:text-blue-600 font-medium py-2">Home</a>
+                            <a href="#featured-degrees" class="text-gray-700 hover:text-blue-600 font-medium py-2">Programs</a>
+                            <a href="#top-universities" class="text-gray-700 hover:text-blue-600 font-medium py-2">Universities</a>
+                            <a href="#why-us" class="text-gray-700 hover:text-blue-600 font-medium py-2">Why Us</a>
+                            <a href="#testimonials" class="text-gray-700 hover:text-blue-600 font-medium py-2">Testimonials</a>
+                            <a href="#blogs" class="text-gray-700 hover:text-blue-600 font-medium py-2">Blog</a>
+                            <button class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg font-medium w-full hover:from-blue-700 hover:to-blue-800">
                                 Sign Up
                             </button>
                         </div>
