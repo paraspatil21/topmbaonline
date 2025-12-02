@@ -1,4 +1,4 @@
-// js/script.js
+// js/script.js - UPDATED WITH ALL EDITS (including MBA in Operations)
 document.addEventListener('DOMContentLoaded', function() {
     // Data initialization
     initializeData();
@@ -27,23 +27,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Data initialization
 function initializeData() {
-    // Top Universities Data
+    // Top Universities Data - REMOVED IIM Ahmedabad and IIT Delhi
     const universities = [
         { id: 1, name: 'NMIMS University', shortName: 'NMIMS' },
         { id: 2, name: 'VIT University', shortName: 'VIT' },
-        { id: 3, name: 'IIM Ahmedabad', shortName: 'IIMA' },
-        { id: 4, name: 'Jain University', shortName: 'Jain' },
-        { id: 5, name: 'Amity University', shortName: 'Amity' },
-        { id: 6, name: 'Manipal University', shortName: 'Manipal' },
-        { id: 7, name: 'DY Patil University', shortName: 'DY Patil' },
-        { id: 8, name: 'UPES', shortName: 'UPES' },
-        { id: 9, name: 'Shoolini University', shortName: 'Shoolini' },
-        { id: 10, name: 'Chandigarh University', shortName: 'Chandigarh' },
-        { id: 11, name: 'Sikkim Manipal University', shortName: 'SMU' },
-        { id: 12, name: 'IIT Delhi', shortName: 'IITD' }
+        { id: 3, name: 'Jain University', shortName: 'Jain' },
+        { id: 4, name: 'Amity University', shortName: 'Amity' },
+        { id: 5, name: 'Manipal University', shortName: 'Manipal' },
+        { id: 6, name: 'DY Patil University', shortName: 'DY Patil' },
+        { id: 7, name: 'UPES', shortName: 'UPES' },
+        { id: 8, name: 'Shoolini University', shortName: 'Shoolini' },
+        { id: 9, name: 'Chandigarh University', shortName: 'Chandigarh' },
+        { id: 10, name: 'Sikkim Manipal University', shortName: 'SMU' }
     ];
 
-    // MBA Specializations Data
+    // MBA Specializations Data - UPDATED: Removed Agribusiness and Petroleum, Added Operations, Finance, Data Science, and additional Operations
     const mbaSpecializations = [
         {
             id: 1,
@@ -59,9 +57,9 @@ function initializeData() {
         },
         {
             id: 3,
-            title: 'MBA in Agribusiness Management',
-            description: 'Focus on agricultural business, supply chain, and rural development management.',
-            icon: 'fa-tractor'
+            title: 'MBA in Operations Management',
+            description: 'Focus on supply chain management, process optimization, and operational excellence.',
+            icon: 'fa-cogs'
         },
         {
             id: 4,
@@ -71,9 +69,9 @@ function initializeData() {
         },
         {
             id: 5,
-            title: 'MBA in Petroleum & Natural Gas Management',
-            description: 'Specialize in energy sector management, oil & gas operations.',
-            icon: 'fa-oil-well'
+            title: 'MBA in Finance',
+            description: 'Master financial analysis, investment strategies, and corporate finance management.',
+            icon: 'fa-chart-pie'
         },
         {
             id: 6,
@@ -86,6 +84,18 @@ function initializeData() {
             title: 'MBA in HR Management',
             description: 'Excel in human resources, talent management, and organizational development.',
             icon: 'fa-users'
+        },
+        {
+            id: 8,
+            title: 'MBA in Data Science',
+            description: 'Specialize in data mining, machine learning, and big data analytics for business decisions.',
+            icon: 'fa-database'
+        },
+        {
+            id: 9,
+            title: 'MBA in Operations',
+            description: 'Master operations management, analytics for business growth.',
+            icon: 'fa-bullhorn'
         }
     ];
 
@@ -112,7 +122,7 @@ function initializeData() {
         {
             id: 3,
             title: 'Executive MBA',
-            provider: 'IIM Ahmedabad',
+            provider: 'Manipal University',
             level: 'Advanced',
             duration: '24 Months',
             price: '₹4,50,000',
@@ -138,11 +148,29 @@ function initializeData() {
         },
         {
             id: 6,
-            title: 'MBA in Agribusiness',
+            title: 'MBA in Operations Management',
             provider: 'Jain University',
             level: 'Intermediate',
             duration: '18 Months',
-            price: '₹1,50,000',
+            price: '₹1,75,000',
+            tags: ['beginner']
+        },
+        {
+            id: 7,
+            title: 'MBA in Data Science',
+            provider: 'Amity University',
+            level: 'Advanced',
+            duration: '24 Months',
+            price: '₹2,80,000',
+            tags: ['top-rated', 'popular']
+        },
+        {
+            id: 8,
+            title: 'MBA in HR Management',
+            provider: 'Chandigarh University',
+            level: 'Intermediate',
+            duration: '18 Months',
+            price: '₹1,65,000',
             tags: ['beginner']
         }
     ];
@@ -204,43 +232,43 @@ function initializeData() {
         }
     ];
 
-    // Updated University-Course Matrix Data with all universities
+    // Updated University-Course Matrix Data with updated universities (now 9 specializations)
     const universityCourses = [
         {
             university: 'Amity University Online',
-            courses: ['✓', '✓', '✓', '✓', '✓', '✓']
+            courses: ['✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓']
         },
         {
             university: 'Jain University',
-            courses: ['✓', '✓', '✓', '✓', '✓', '✓']
+            courses: ['✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓']
         },
         {
             university: 'Manipal University Jaipur',
-            courses: ['✓', '✓', '✓', '✓', '✓', '✓']
+            courses: ['✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓']
         },
         {
             university: 'DY Patil University',
-            courses: ['✓', '✓', '✓', '✓', '✓', '✓']
+            courses: ['✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓']
         },
         {
             university: 'UPES',
-            courses: ['✓', '✓', '✓', '✓', '✓', '✓']
+            courses: ['✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓']
         },
         {
             university: 'Shoolini University',
-            courses: ['✓', '✓', '✓', '✓', '✓', '✓']
+            courses: ['✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓']
         },
         {
             university: 'NMIMS University',
-            courses: ['✓', '✓', '✓', '✓', '✓', '✓']
+            courses: ['✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓']
         },
         {
             university: 'Chandigarh University',
-            courses: ['✓', '✓', '✓', '✓', '✓', '✓']
+            courses: ['✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓']
         },
         {
             university: 'Sikkim Manipal University',
-            courses: ['✓', '✓', '✓', '✓', '✓', '✓']
+            courses: ['✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓']
         }
     ];
 
@@ -263,7 +291,7 @@ function initializeData() {
     renderUniversityCourseMatrix();
 }
 
-// Banner Slider
+// Banner Slider - UPDATED: Now only 3 banners with 3rd banner for Executive MBA
 function initializeBannerSlider() {
     const banners = document.querySelectorAll('.hero-banner');
     const dots = document.querySelectorAll('.dot');
@@ -560,13 +588,14 @@ function showTestimonial(index) {
     dots[index].classList.add('active');
 }
 
-// Initialize counters for stats
+// Initialize counters for stats - UPDATED for new stats
 function initializeCounters() {
     const statNumbers = document.querySelectorAll('.stat-number');
     
     statNumbers.forEach(stat => {
-        const target = parseInt(stat.textContent.replace(/\D/g, ''));
-        const suffix = stat.textContent.replace(/[0-9]/g, '');
+        const text = stat.textContent;
+        const target = parseInt(text.replace(/\D/g, ''));
+        const suffix = text.replace(/[0-9]/g, '');
         
         let current = 0;
         const increment = target / 50;
@@ -582,22 +611,25 @@ function initializeCounters() {
     });
 }
 
-// Initialize charts
+// Initialize charts - UPDATED for new specializations (now 9)
 function initializeCharts() {
-    // Course Categories Chart (Pie/Doughnut) - Updated for MBA
+    // Course Categories Chart (Pie/Doughnut) - Updated for MBA with new specializations
     const categoriesCtx = document.getElementById('courseCategoriesChart');
     if (categoriesCtx) {
         const categoriesData = {
-            labels: ['Business Analytics', 'Digital Marketing', 'HR Management', 'Hospital Admin', 'Finance', 'Others'],
+            labels: ['Business Analytics', 'Digital Marketing', 'Finance', 'Operations Management', 'Operations', 'Data Science', 'HR Management', 'Hospital Admin', 'Others'],
             datasets: [{
-                data: [30, 25, 15, 10, 12, 8],
+                data: [20, 18, 15, 12, 10, 8, 7, 5, 5],
                 backgroundColor: [
-                    '#0ea5e9', // Blue
-                    '#f59e0b', // Yellow
-                    '#10b981', // Green
-                    '#8b5cf6', // Purple
-                    '#ef4444', // Red
-                    '#94a3b8'  // Gray
+                    '#0ea5e9', // Blue - Business Analytics
+                    '#f59e0b', // Yellow - Digital Marketing
+                    '#ef4444', // Red - Finance
+                    '#10b981', // Green - Operations Management
+                    '#8b5cf6', // Purple - Operations
+                    '#f97316', // Orange - Data Science
+                    '#06b6d4', // Cyan - HR Management
+                    '#ec4899', // Pink - Hospital Admin
+                    '#94a3b8'  // Gray - Others
                 ],
                 borderWidth: 3,
                 borderColor: '#ffffff',
@@ -858,10 +890,13 @@ function renderUniversityCourseMatrix() {
                 <th>University</th>
                 <th>Digital Marketing</th>
                 <th>Hospital Admin</th>
+                <th>Operations Management</th>
+                <th>Hospitality Management</th>
+                <th>Finance</th>
                 <th>Business Analytics</th>
-                <th>Agribusiness</th>
-                <th>Hospitality</th>
-                <th>Petroleum</th>
+                <th>HR Management</th>
+                <th>Data Science</th>
+                <th>Operations</th>
             </tr>
         </thead>
         <tbody>
@@ -874,6 +909,9 @@ function renderUniversityCourseMatrix() {
                     <td>${university.courses[3]}</td>
                     <td>${university.courses[4]}</td>
                     <td>${university.courses[5]}</td>
+                    <td>${university.courses[6]}</td>
+                    <td>${university.courses[7]}</td>
+                    <td>${university.courses[8]}</td>
                 </tr>
             `).join('')}
         </tbody>
@@ -887,10 +925,9 @@ function renderUniversityCourseMatrix() {
 function getUniversityLogoClass(provider) {
     if (provider.includes('NMIMS')) return 'nmims';
     if (provider.includes('VIT')) return 'vit';
-    if (provider.includes('IIM')) return 'iim';
+    if (provider.includes('Manipal')) return 'manipal';
     if (provider.includes('Jain')) return 'jain';
     if (provider.includes('Amity')) return 'amity';
-    if (provider.includes('Manipal')) return 'manipal';
     if (provider.includes('DY Patil')) return 'dy-patil';
     if (provider.includes('UPES')) return 'upes';
     if (provider.includes('Shoolini')) return 'shoolini';
@@ -902,10 +939,9 @@ function getUniversityLogoClass(provider) {
 function getUniversityLogoText(provider) {
     if (provider.includes('NMIMS')) return 'NM';
     if (provider.includes('VIT')) return 'VI';
-    if (provider.includes('IIM')) return 'II';
+    if (provider.includes('Manipal')) return 'MA';
     if (provider.includes('Jain')) return 'JN';
     if (provider.includes('Amity')) return 'AM';
-    if (provider.includes('Manipal')) return 'MA';
     if (provider.includes('DY Patil')) return 'DY';
     if (provider.includes('UPES')) return 'UP';
     if (provider.includes('Shoolini')) return 'SH';
