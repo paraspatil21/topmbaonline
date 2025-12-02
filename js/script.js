@@ -1,47 +1,116 @@
-// js/script.js - UPDATED WITH ALL EDITS (including MBA in Operations)
+// js/script.js - UPDATED WITH NEW UNIVERSITY SECTION
 document.addEventListener('DOMContentLoaded', function() {
-    // Data initialization
-    initializeData();
+    console.log('DOM loaded, initializing...');
     
     // Initialize components
+    initializeData();
     initializeBannerSlider();
     initializeFilterButtons();
     initializeTestimonialSlider();
     initializeCounters();
     initializeCharts();
-    
-    // Initialize brochure modal
     initializeBrochureModal();
-    
-    // Search functionality
     initializeSearch();
-    
-    // Mobile optimization
     optimizeForMobile();
     
     // Initialize animated counters
     setTimeout(() => {
         initializeAnimatedCounters();
     }, 1000);
+    
+    // Initial render
+    renderAllComponents();
 });
 
-// Data initialization
+// Data initialization - COMPLETELY NEW UNIVERSITY DATA
 function initializeData() {
-    // Top Universities Data - REMOVED IIM Ahmedabad and IIT Delhi
+    console.log('Initializing data...');
+    
+    // NEW: University Data with local image paths
     const universities = [
-        { id: 1, name: 'NMIMS University', shortName: 'NMIMS' },
-        { id: 2, name: 'VIT University', shortName: 'VIT' },
-        { id: 3, name: 'Jain University', shortName: 'Jain' },
-        { id: 4, name: 'Amity University', shortName: 'Amity' },
-        { id: 5, name: 'Manipal University', shortName: 'Manipal' },
-        { id: 6, name: 'DY Patil University', shortName: 'DY Patil' },
-        { id: 7, name: 'UPES', shortName: 'UPES' },
-        { id: 8, name: 'Shoolini University', shortName: 'Shoolini' },
-        { id: 9, name: 'Chandigarh University', shortName: 'Chandigarh' },
-        { id: 10, name: 'Sikkim Manipal University', shortName: 'SMU' }
+        { 
+            id: 1, 
+            name: 'NMIMS University', 
+            shortName: 'NMIMS',
+            logoPath: 'assets/img/NMIMS.png',
+            fallbackText: 'NM',
+            fallbackColor: 'bg-gradient-to-r from-blue-600 to-blue-700'
+        },
+        { 
+            id: 2, 
+            name: 'VIT University', 
+            shortName: 'VIT',
+            logoPath: 'assets/img/VIT.png',
+            fallbackText: 'VI',
+            fallbackColor: 'bg-gradient-to-r from-yellow-500 to-yellow-600'
+        },
+        { 
+            id: 3, 
+            name: 'Jain University', 
+            shortName: 'Jain',
+            logoPath: 'assets/img/Jain.png',
+            fallbackText: 'JN',
+            fallbackColor: 'bg-gradient-to-r from-purple-600 to-purple-700'
+        },
+        { 
+            id: 4, 
+            name: 'Amity University', 
+            shortName: 'Amity',
+            logoPath: 'assets/img/Amity.png',
+            fallbackText: 'AM',
+            fallbackColor: 'bg-gradient-to-r from-red-600 to-red-700'
+        },
+        { 
+            id: 5, 
+            name: 'Manipal University', 
+            shortName: 'Manipal',
+            logoPath: 'assets/img/Manipal.png',
+            fallbackText: 'MA',
+            fallbackColor: 'bg-gradient-to-r from-green-600 to-green-700'
+        },
+        { 
+            id: 6, 
+            name: 'DY Patil University', 
+            shortName: 'DY Patil',
+            logoPath: 'assets/img/DY_PATIL.png',
+            fallbackText: 'DY',
+            fallbackColor: 'bg-gradient-to-r from-indigo-600 to-indigo-700'
+        },
+        { 
+            id: 7, 
+            name: 'UPES', 
+            shortName: 'UPES',
+            logoPath: 'assets/img/UPES.png',
+            fallbackText: 'UP',
+            fallbackColor: 'bg-gradient-to-r from-teal-600 to-teal-700'
+        },
+        { 
+            id: 8, 
+            name: 'Shoolini University', 
+            shortName: 'Shoolini',
+            logoPath: 'assets/img/Shoolini.png',
+            fallbackText: 'SH',
+            fallbackColor: 'bg-gradient-to-r from-pink-600 to-pink-700'
+        },
+        { 
+            id: 9, 
+            name: 'Chandigarh University', 
+            shortName: 'Chandigarh',
+            logoPath: 'assets/img/CU.png',
+            fallbackText: 'CH',
+            fallbackColor: 'bg-gradient-to-r from-orange-600 to-orange-700'
+        },
+        { 
+            id: 10, 
+            name: 'Sikkim Manipal University', 
+            shortName: 'SMU',
+            logoPath: 'assets/img/SMU.png',
+            fallbackText: 'SM',
+            fallbackColor: 'bg-gradient-to-r from-cyan-600 to-cyan-700'
+        }
     ];
 
-    // MBA Specializations Data - UPDATED: Removed Agribusiness and Petroleum, Added Operations, Finance, Data Science, and additional Operations
+    // MBA Specializations Data
     const mbaSpecializations = [
         {
             id: 1,
@@ -90,88 +159,91 @@ function initializeData() {
             title: 'MBA in Data Science',
             description: 'Specialize in data mining, machine learning, and big data analytics for business decisions.',
             icon: 'fa-database'
-        },
-        {
-            id: 9,
-            title: 'MBA in Operations',
-            description: 'Master operations management, analytics for business growth.',
-            icon: 'fa-bullhorn'
         }
     ];
 
-    // MBA Courses Data
+    // Updated MBA Courses Data
     const mbaCourses = [
         {
             id: 1,
-            title: 'MBA in Business Analytics',
-            provider: 'NMIMS University',
-            level: 'Advanced',
-            duration: '24 Months',
-            price: '₹2,50,000',
-            tags: ['top-rated', 'popular']
+            university: 'NMIMS University',
+            courseName: 'MBA (WX) - Leadership & Strategy',
+            duration: '2 years',
+            fees: '₹4,00,000',
+            category: 'Executive MBA',
+            eligibility: 'Bachelor\'s Degree (10+2+3) in any discipline from recognized University or an equivalent degree recognised by Association of Indian Universities (AIU) with a minimum of 55% (50% for SC/ST/OBC/PwD) and 3 + years of Work Experience'
         },
         {
             id: 2,
-            title: 'MBA in Digital Marketing',
-            provider: 'VIT University',
-            level: 'Intermediate',
-            duration: '18 Months',
-            price: '₹1,80,000',
-            tags: ['beginner', 'popular']
+            university: 'NMIMS University',
+            courseName: 'MBA (WX) - Operations & Supply Chain Management',
+            duration: '2 years',
+            fees: '₹4,00,000',
+            category: 'Executive MBA',
+            eligibility: 'Bachelor\'s Degree (10+2+3) in any discipline from recognized University or an equivalent degree recognised by Association of Indian Universities (AIU) with a minimum of 55% (50% for SC/ST/OBC/PwD) and 3 + years of Work Experience'
         },
         {
             id: 3,
-            title: 'Executive MBA',
-            provider: 'Manipal University',
-            level: 'Advanced',
-            duration: '24 Months',
-            price: '₹4,50,000',
-            tags: ['top-rated']
+            university: 'Manipal University',
+            courseName: 'Analytics & Data Science',
+            duration: '2 years',
+            fees: '₹1,75,000',
+            category: 'Online MBA',
+            eligibility: ''
         },
         {
             id: 4,
-            title: 'MBA in Hospital Administration',
-            provider: 'NMIMS University',
-            level: 'Intermediate',
-            duration: '18 Months',
-            price: '₹2,20,000',
-            tags: ['beginner']
+            university: 'Manipal University',
+            courseName: 'Information System Management',
+            duration: '2 years',
+            fees: '₹1,75,000',
+            category: 'Online MBA',
+            eligibility: 'Candidates must have a 10 + 2 + 3-year bachelor\'s degree from a recognized university/institution or an equivalent qualification as recognized by the Association of Indian Universities.'
         },
         {
             id: 5,
-            title: 'MBA in Finance',
-            provider: 'VIT University',
-            level: 'Advanced',
-            duration: '24 Months',
-            price: '₹2,00,000',
-            tags: ['top-rated', 'popular']
+            university: 'VIT University',
+            courseName: 'General Management',
+            duration: '2 years',
+            fees: '₹1,85,000',
+            category: 'Online MBA',
+            eligibility: 'Completed a Bachelor\'s degree of at least three years duration with a minimum of 50% marks (45% for candidates in reserved categories).'
         },
         {
             id: 6,
-            title: 'MBA in Operations Management',
-            provider: 'Jain University',
-            level: 'Intermediate',
-            duration: '18 Months',
-            price: '₹1,75,000',
-            tags: ['beginner']
+            university: 'VIT University',
+            courseName: 'Operation and Supply Chain Management',
+            duration: '2 years',
+            fees: '₹1,85,000',
+            category: 'Online MBA',
+            eligibility: 'Completed a Bachelor\'s degree of at least three years duration with a minimum of 50% marks (45% for candidates in reserved categories).'
         },
         {
             id: 7,
-            title: 'MBA in Data Science',
-            provider: 'Amity University',
-            level: 'Advanced',
-            duration: '24 Months',
-            price: '₹2,80,000',
-            tags: ['top-rated', 'popular']
+            university: 'Amity University',
+            courseName: 'MBA in Dual Specialization',
+            duration: '2 years',
+            fees: '₹1,99,000',
+            category: 'Online MBA',
+            eligibility: '1. Fresh graduates and working professionals.<br>2. Entrepreneurs looking to develop skills to manage critical business projects.'
         },
         {
             id: 8,
-            title: 'MBA in HR Management',
-            provider: 'Chandigarh University',
-            level: 'Intermediate',
-            duration: '18 Months',
-            price: '₹1,65,000',
-            tags: ['beginner']
+            university: 'Amity University',
+            courseName: 'MBA in International Finance',
+            duration: '2 years',
+            fees: '₹1,99,000',
+            category: 'Online MBA',
+            eligibility: '1. Fresh graduates and working professionals.<br>2. Entrepreneurs looking to develop skills to manage critical business projects.'
+        },
+        {
+            id: 9,
+            university: 'Jain University',
+            courseName: 'MBA in AI for Business Strategy',
+            duration: '2 years',
+            fees: '₹2,50,000',
+            category: 'Online MBA',
+            eligibility: '1. Pass in an Undergraduate (Bachelor) Program of a minimum duration of three (3) years in any stream from a UGC Recognized University<br>2. A minimum aggregate of 50% or an equivalent letter/ numerical grade.<br>3. A relaxation of 5% shall be given to SC/ST candidates.<br>Candidates who are in the final semester of the Bachelors Program are also eligible to apply.'
         }
     ];
 
@@ -232,84 +304,115 @@ function initializeData() {
         }
     ];
 
-    // Updated University-Course Matrix Data with updated universities (now 9 specializations)
-    const universityCourses = [
-        {
-            university: 'Amity University Online',
-            courses: ['✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓']
-        },
-        {
-            university: 'Jain University',
-            courses: ['✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓']
-        },
-        {
-            university: 'Manipal University Jaipur',
-            courses: ['✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓']
-        },
-        {
-            university: 'DY Patil University',
-            courses: ['✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓']
-        },
-        {
-            university: 'UPES',
-            courses: ['✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓']
-        },
-        {
-            university: 'Shoolini University',
-            courses: ['✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓']
-        },
-        {
-            university: 'NMIMS University',
-            courses: ['✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓']
-        },
-        {
-            university: 'Chandigarh University',
-            courses: ['✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓']
-        },
-        {
-            university: 'Sikkim Manipal University',
-            courses: ['✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓', '✓']
-        }
-    ];
-
     // Store data globally
     window.appData = {
         universities,
         mbaSpecializations,
         mbaCourses,
         testimonials,
-        blogs,
-        universityCourses
+        blogs
     };
 
-    // Render components after data is loaded
-    renderUniversities();
+    console.log('Data initialized successfully');
+}
+
+// Render all components
+function renderAllComponents() {
+    renderUniversitiesNew();
     renderMBASpecializations();
     renderMBACourses();
     renderTestimonials();
     renderBlogs();
-    renderUniversityCourseMatrix();
 }
 
-// Banner Slider - UPDATED: Now only 3 banners with 3rd banner for Executive MBA
+// NEW: University rendering function for the redesigned section
+function renderUniversitiesNew() {
+    const universityGrid = document.querySelector('.university-grid-new');
+    if (!universityGrid || !window.appData.universities) {
+        console.error('University grid or data not found');
+        return;
+    }
+    
+    console.log('Rendering new university grid...');
+    universityGrid.innerHTML = '';
+    
+    window.appData.universities.forEach(university => {
+        console.log(`Rendering ${university.name} with logo path: ${university.logoPath}`);
+        
+        const universityCard = document.createElement('div');
+        universityCard.className = 'university-card-new fade-in';
+        
+        // Create logo container
+        const logoContainer = document.createElement('div');
+        logoContainer.className = 'university-logo-container';
+        
+        // Create image element
+        const img = document.createElement('img');
+        img.src = university.logoPath;
+        img.alt = `${university.name} Logo`;
+        img.loading = 'lazy';
+        img.className = 'university-logo-img';
+        
+        // Create fallback div (hidden initially)
+        const fallbackDiv = document.createElement('div');
+        fallbackDiv.className = `university-logo-fallback ${university.fallbackColor}`;
+        fallbackDiv.textContent = university.fallbackText;
+        fallbackDiv.style.display = 'none';
+        
+        // Add image error handler
+        img.onerror = function() {
+            console.error(`Failed to load logo: ${university.logoPath}`);
+            this.style.display = 'none';
+            fallbackDiv.style.display = 'flex';
+        };
+        
+        img.onload = function() {
+            console.log(`Logo loaded successfully: ${university.logoPath}`);
+            this.style.display = 'block';
+            fallbackDiv.style.display = 'none';
+        };
+        
+        // Add both image and fallback to container
+        logoContainer.appendChild(img);
+        logoContainer.appendChild(fallbackDiv);
+        
+        // Create university name
+        const nameDiv = document.createElement('div');
+        nameDiv.className = 'university-name';
+        nameDiv.textContent = university.name;
+        
+        // Create card content
+        universityCard.innerHTML = `
+            <div class="university-card-content">
+                ${logoContainer.outerHTML}
+                ${nameDiv.outerHTML}
+            </div>
+        `;
+        
+        universityGrid.appendChild(universityCard);
+    });
+    
+    console.log('New universities rendered successfully');
+}
+
+// Banner Slider (same as before)
 function initializeBannerSlider() {
     const banners = document.querySelectorAll('.hero-banner');
     const dots = document.querySelectorAll('.dot');
     const prevBtn = document.getElementById('prev-banner');
     const nextBtn = document.getElementById('next-banner');
     
+    if (banners.length === 0) return;
+    
     let currentBanner = 0;
     const totalBanners = banners.length;
     
-    // Auto slide every 5 seconds
     let slideInterval = setInterval(nextSlide, 5000);
     
     function showBanner(index) {
-        // Hide all banners
         banners.forEach(banner => banner.classList.remove('active'));
         dots.forEach(dot => dot.classList.remove('active'));
         
-        // Show selected banner
         banners[index].classList.add('active');
         dots[index].classList.add('active');
         
@@ -326,7 +429,6 @@ function initializeBannerSlider() {
         showBanner(prevIndex);
     }
     
-    // Event listeners for dots
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             clearInterval(slideInterval);
@@ -335,7 +437,6 @@ function initializeBannerSlider() {
         });
     });
     
-    // Event listeners for navigation arrows
     if (prevBtn) {
         prevBtn.addEventListener('click', () => {
             clearInterval(slideInterval);
@@ -369,7 +470,6 @@ function initializeBannerSlider() {
 function initializeFilterButtons() {
     const mbaFilterBtns = document.querySelectorAll('.genai-filters .filter-btn');
     
-    // MBA filters
     mbaFilterBtns.forEach(btn => {
         btn.addEventListener('click', function() {
             // Remove active class from all buttons
@@ -394,9 +494,16 @@ function filterMBACourses(filter) {
         return;
     }
     
-    const filteredCourses = courses.filter(course => 
-        course.tags.includes(filter)
-    );
+    const filteredCourses = courses.filter(course => {
+        if (filter === 'beginner') {
+            return course.category.toLowerCase().includes('online');
+        } else if (filter === 'top-rated') {
+            return course.category.toLowerCase().includes('executive');
+        } else if (filter === 'popular') {
+            return parseFloat(course.fees.replace(/[₹,]/g, '')) < 200000;
+        }
+        return false;
+    });
     
     renderFilteredMBACourses(filteredCourses);
 }
@@ -422,7 +529,6 @@ function renderFilteredMBACourses(courses) {
             </div>
         `;
         
-        // Re-attach event listener to the "Show All Programs" button
         const showAllBtn = coursesGrid.querySelector('.filter-btn');
         if (showAllBtn) {
             showAllBtn.addEventListener('click', () => {
@@ -439,38 +545,39 @@ function renderFilteredMBACourses(courses) {
         const courseCard = document.createElement('div');
         courseCard.className = 'mba-square-card fade-in';
         
-        // Get university logo class
-        const logoClass = getUniversityLogoClass(course.provider);
-        const logoText = getUniversityLogoText(course.provider);
+        const logoText = course.university.substring(0, 2);
         
         courseCard.innerHTML = `
             <div class="mba-card-header">
-                <h3 class="mba-card-title">${course.title}</h3>
+                <h3 class="mba-card-title">${course.courseName}</h3>
                 <div class="mba-card-provider">
-                    <span class="university-logo ${logoClass}">${logoText}</span>
-                    ${course.provider}
+                    <span class="university-logo-small">${logoText}</span>
+                    ${course.university}
                 </div>
             </div>
             <div class="mba-card-body">
                 <div class="mba-card-badges">
                     <span class="mba-badge level">
-                        <i class="fas fa-user-graduate"></i>
-                        ${course.level}
-                    </span>
-                    <span class="mba-badge duration">
-                        <i class="far fa-clock"></i>
+                        <i class="fas fa-clock"></i>
                         ${course.duration}
                     </span>
-                    ${course.tags.map(tag => `
-                        <span class="mba-badge tag">
-                            ${tag === 'top-rated' ? '<i class="fas fa-star"></i> Top Rated' : ''}
-                            ${tag === 'popular' ? '<i class="fas fa-fire"></i> Popular' : ''}
-                            ${tag === 'beginner' ? '<i class="fas fa-seedling"></i> Beginner' : ''}
-                        </span>
-                    `).join('')}
+                    <span class="mba-badge duration">
+                        <i class="fas fa-tag"></i>
+                        ${course.category}
+                    </span>
                 </div>
+                
+                <div class="mt-4 mb-6 p-4 bg-blue-50 rounded-lg border border-blue-100">
+                    <h4 class="font-bold text-blue-800 mb-2 flex items-center">
+                        <i class="fas fa-graduation-cap mr-2"></i> Eligibility
+                    </h4>
+                    <div class="text-sm text-gray-700 eligibility-content max-h-32 overflow-y-auto">
+                        ${course.eligibility ? course.eligibility.replace(/\n/g, '<br>') : 'Check with university for eligibility criteria.'}
+                    </div>
+                </div>
+                
                 <div class="mba-card-price">
-                    <div class="mba-price">${course.price}</div>
+                    <div class="mba-price">${course.fees}</div>
                     <div class="mba-price-note">Complete Program Fee</div>
                 </div>
             </div>
@@ -494,11 +601,9 @@ function initializeTestimonialSlider() {
     
     if (!slidesContainer || !dotsContainer) return;
     
-    // Clear existing slides
     const existingSlides = slidesContainer.querySelectorAll('.testimonial-slide');
     existingSlides.forEach(slide => slide.remove());
     
-    // Create slides
     testimonials.forEach((testimonial, index) => {
         const slide = document.createElement('div');
         slide.className = `testimonial-slide ${index === 0 ? 'active' : ''}`;
@@ -518,14 +623,12 @@ function initializeTestimonialSlider() {
         `;
         slidesContainer.insertBefore(slide, slidesContainer.querySelector('.testimonial-controls'));
         
-        // Create dot
         const dot = document.createElement('span');
         dot.className = `testimonial-dot ${index === 0 ? 'active' : ''}`;
         dot.dataset.index = index;
         dotsContainer.appendChild(dot);
     });
     
-    // Add event listeners to dots
     const dots = document.querySelectorAll('.testimonial-dot');
     dots.forEach(dot => {
         dot.addEventListener('click', function() {
@@ -534,7 +637,6 @@ function initializeTestimonialSlider() {
         });
     });
     
-    // Add event listeners to navigation buttons
     const prevBtn = document.getElementById('prev-testimonial');
     const nextBtn = document.getElementById('next-testimonial');
     
@@ -554,13 +656,11 @@ function initializeTestimonialSlider() {
         });
     }
     
-    // Auto slide testimonials
     let testimonialInterval = setInterval(() => {
         currentTestimonial = (currentTestimonial + 1) % testimonials.length;
         showTestimonial(currentTestimonial);
     }, 8000);
     
-    // Pause auto-slide on hover
     slidesContainer.addEventListener('mouseenter', () => {
         clearInterval(testimonialInterval);
     });
@@ -577,18 +677,14 @@ function showTestimonial(index) {
     const slides = document.querySelectorAll('.testimonial-slide');
     const dots = document.querySelectorAll('.testimonial-dot');
     
-    // Hide all slides
     slides.forEach(slide => slide.classList.remove('active'));
-    
-    // Remove active class from all dots
     dots.forEach(dot => dot.classList.remove('active'));
     
-    // Show selected slide
     slides[index].classList.add('active');
     dots[index].classList.add('active');
 }
 
-// Initialize counters for stats - UPDATED for new stats
+// Initialize counters for stats
 function initializeCounters() {
     const statNumbers = document.querySelectorAll('.stat-number');
     
@@ -611,25 +707,23 @@ function initializeCounters() {
     });
 }
 
-// Initialize charts - UPDATED for new specializations (now 9)
+// Initialize charts
 function initializeCharts() {
-    // Course Categories Chart (Pie/Doughnut) - Updated for MBA with new specializations
     const categoriesCtx = document.getElementById('courseCategoriesChart');
     if (categoriesCtx) {
         const categoriesData = {
-            labels: ['Business Analytics', 'Digital Marketing', 'Finance', 'Operations Management', 'Operations', 'Data Science', 'HR Management', 'Hospital Admin', 'Others'],
+            labels: ['Business Analytics', 'Digital Marketing', 'Finance', 'Operations Management', 'Data Science', 'HR Management', 'Hospital Admin', 'Others'],
             datasets: [{
-                data: [20, 18, 15, 12, 10, 8, 7, 5, 5],
+                data: [20, 18, 15, 12, 10, 8, 7, 10],
                 backgroundColor: [
-                    '#0ea5e9', // Blue - Business Analytics
-                    '#f59e0b', // Yellow - Digital Marketing
-                    '#ef4444', // Red - Finance
-                    '#10b981', // Green - Operations Management
-                    '#8b5cf6', // Purple - Operations
-                    '#f97316', // Orange - Data Science
-                    '#06b6d4', // Cyan - HR Management
-                    '#ec4899', // Pink - Hospital Admin
-                    '#94a3b8'  // Gray - Others
+                    '#0ea5e9',
+                    '#f59e0b',
+                    '#ef4444',
+                    '#10b981',
+                    '#8b5cf6',
+                    '#06b6d4',
+                    '#ec4899',
+                    '#94a3b8'
                 ],
                 borderWidth: 3,
                 borderColor: '#ffffff',
@@ -701,36 +795,28 @@ function performSearch() {
     
     if (!query) return;
     
-    // Show loading state
     const searchBtn = document.querySelector('.search-btn');
     const originalText = searchBtn.innerHTML;
     searchBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Searching...';
     searchBtn.disabled = true;
     
-    // Simulate search
     setTimeout(() => {
-        // Reset button
         searchBtn.innerHTML = originalText;
         searchBtn.disabled = false;
-        
-        // Show search results
         alert(`Searching for MBA programs: ${query}\n\nThis would show MBA search results in a real implementation.`);
     }, 1000);
 }
 
 // Optimize for mobile
 function optimizeForMobile() {
-    // Prevent horizontal scrolling on mobile
     document.body.style.overflowX = 'hidden';
     document.documentElement.style.overflowX = 'hidden';
     
-    // Improve touch interactions
     const interactiveElements = document.querySelectorAll('button, a, .university-card, .degree-card, .certification-card');
     interactiveElements.forEach(el => {
         el.style.webkitTapHighlightColor = 'transparent';
     });
     
-    // Adjust font sizes for mobile
     if (window.innerWidth < 768) {
         document.querySelectorAll('.text-4xl, .text-5xl').forEach(el => {
             if (el.classList.contains('text-4xl')) el.classList.replace('text-4xl', 'text-3xl');
@@ -739,26 +825,7 @@ function optimizeForMobile() {
     }
 }
 
-// Render functions
-function renderUniversities() {
-    const universityGrid = document.querySelector('.university-grid');
-    if (!universityGrid || !window.appData.universities) return;
-    
-    universityGrid.innerHTML = '';
-    
-    window.appData.universities.forEach(university => {
-        const universityCard = document.createElement('div');
-        universityCard.className = 'university-card fade-in';
-        universityCard.innerHTML = `
-            <div class="university-logo">
-                ${university.shortName}
-            </div>
-            <h3 class="font-semibold">${university.name}</h3>
-        `;
-        universityGrid.appendChild(universityCard);
-    });
-}
-
+// Render MBA Specializations
 function renderMBASpecializations() {
     const specializationsGrid = document.getElementById('mba-specializations');
     if (!specializationsGrid || !window.appData.mbaSpecializations) return;
@@ -771,7 +838,7 @@ function renderMBASpecializations() {
         specCard.innerHTML = `
             <div class="degree-header">
                 <div class="flex items-center gap-3">
-                    <i class="${specialization.icon} text-2xl"></i>
+                    <i class="fas ${specialization.icon} text-2xl"></i>
                     <h3 class="text-xl font-bold">${specialization.title}</h3>
                 </div>
             </div>
@@ -788,6 +855,7 @@ function renderMBASpecializations() {
     attachCompareEventListeners();
 }
 
+// Render MBA Courses
 function renderMBACourses() {
     const coursesGrid = document.querySelector('.genai-courses-grid');
     if (!coursesGrid || !window.appData.mbaCourses) return;
@@ -798,38 +866,39 @@ function renderMBACourses() {
         const courseCard = document.createElement('div');
         courseCard.className = 'mba-square-card fade-in';
         
-        // Get university logo class
-        const logoClass = getUniversityLogoClass(course.provider);
-        const logoText = getUniversityLogoText(course.provider);
+        const logoText = course.university.substring(0, 2);
         
         courseCard.innerHTML = `
             <div class="mba-card-header">
-                <h3 class="mba-card-title">${course.title}</h3>
+                <h3 class="mba-card-title">${course.courseName}</h3>
                 <div class="mba-card-provider">
-                    <span class="university-logo ${logoClass}">${logoText}</span>
-                    ${course.provider}
+                    <span class="university-logo-small">${logoText}</span>
+                    ${course.university}
                 </div>
             </div>
             <div class="mba-card-body">
                 <div class="mba-card-badges">
                     <span class="mba-badge level">
-                        <i class="fas fa-user-graduate"></i>
-                        ${course.level}
-                    </span>
-                    <span class="mba-badge duration">
-                        <i class="far fa-clock"></i>
+                        <i class="fas fa-clock"></i>
                         ${course.duration}
                     </span>
-                    ${course.tags.map(tag => `
-                        <span class="mba-badge tag">
-                            ${tag === 'top-rated' ? '<i class="fas fa-star"></i> Top Rated' : ''}
-                            ${tag === 'popular' ? '<i class="fas fa-fire"></i> Popular' : ''}
-                            ${tag === 'beginner' ? '<i class="fas fa-seedling"></i> Beginner' : ''}
-                        </span>
-                    `).join('')}
+                    <span class="mba-badge duration">
+                        <i class="fas fa-tag"></i>
+                        ${course.category}
+                    </span>
                 </div>
+                
+                <div class="mt-4 mb-6 p-4 bg-blue-50 rounded-lg border border-blue-100">
+                    <h4 class="font-bold text-blue-800 mb-2 flex items-center">
+                        <i class="fas fa-graduation-cap mr-2"></i> Eligibility
+                    </h4>
+                    <div class="text-sm text-gray-700 eligibility-content max-h-32 overflow-y-auto">
+                        ${course.eligibility ? course.eligibility.replace(/\n/g, '<br>') : 'Check with university for eligibility criteria.'}
+                    </div>
+                </div>
+                
                 <div class="mba-card-price">
-                    <div class="mba-price">${course.price}</div>
+                    <div class="mba-price">${course.fees}</div>
                     <div class="mba-price-note">Complete Program Fee</div>
                 </div>
             </div>
@@ -845,10 +914,12 @@ function renderMBACourses() {
     attachBrochureEventListeners();
 }
 
+// Render Testimonials
 function renderTestimonials() {
     // Handled by initializeTestimonialSlider
 }
 
+// Render Blogs
 function renderBlogs() {
     const blogsGrid = document.querySelector('.blogs-grid');
     if (!blogsGrid || !window.appData.blogs) return;
@@ -878,81 +949,8 @@ function renderBlogs() {
     });
 }
 
-function renderUniversityCourseMatrix() {
-    const matrixContainer = document.querySelector('.matrix-container');
-    if (!matrixContainer || !window.appData.universityCourses) return;
-    
-    const table = document.createElement('table');
-    table.className = 'matrix-table';
-    table.innerHTML = `
-        <thead>
-            <tr>
-                <th>University</th>
-                <th>Digital Marketing</th>
-                <th>Hospital Admin</th>
-                <th>Operations Management</th>
-                <th>Hospitality Management</th>
-                <th>Finance</th>
-                <th>Business Analytics</th>
-                <th>HR Management</th>
-                <th>Data Science</th>
-                <th>Operations</th>
-            </tr>
-        </thead>
-        <tbody>
-            ${window.appData.universityCourses.map(university => `
-                <tr>
-                    <td><strong>${university.university}</strong></td>
-                    <td>${university.courses[0]}</td>
-                    <td>${university.courses[1]}</td>
-                    <td>${university.courses[2]}</td>
-                    <td>${university.courses[3]}</td>
-                    <td>${university.courses[4]}</td>
-                    <td>${university.courses[5]}</td>
-                    <td>${university.courses[6]}</td>
-                    <td>${university.courses[7]}</td>
-                    <td>${university.courses[8]}</td>
-                </tr>
-            `).join('')}
-        </tbody>
-    `;
-    
-    matrixContainer.innerHTML = '';
-    matrixContainer.appendChild(table);
-}
-
-// Helper functions for university logos
-function getUniversityLogoClass(provider) {
-    if (provider.includes('NMIMS')) return 'nmims';
-    if (provider.includes('VIT')) return 'vit';
-    if (provider.includes('Manipal')) return 'manipal';
-    if (provider.includes('Jain')) return 'jain';
-    if (provider.includes('Amity')) return 'amity';
-    if (provider.includes('DY Patil')) return 'dy-patil';
-    if (provider.includes('UPES')) return 'upes';
-    if (provider.includes('Shoolini')) return 'shoolini';
-    if (provider.includes('Chandigarh')) return 'chandigarh';
-    if (provider.includes('Sikkim')) return 'sikkim';
-    return '';
-}
-
-function getUniversityLogoText(provider) {
-    if (provider.includes('NMIMS')) return 'NM';
-    if (provider.includes('VIT')) return 'VI';
-    if (provider.includes('Manipal')) return 'MA';
-    if (provider.includes('Jain')) return 'JN';
-    if (provider.includes('Amity')) return 'AM';
-    if (provider.includes('DY Patil')) return 'DY';
-    if (provider.includes('UPES')) return 'UP';
-    if (provider.includes('Shoolini')) return 'SH';
-    if (provider.includes('Chandigarh')) return 'CH';
-    if (provider.includes('Sikkim')) return 'SM';
-    return provider.substring(0, 2);
-}
-
 // Brochure Modal functionality
 function initializeBrochureModal() {
-    // Create modal HTML
     const modalHTML = `
         <div id="brochure-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
             <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
@@ -1052,29 +1050,19 @@ function initializeBrochureModal() {
         </div>
     `;
     
-    // Add modal to body
     document.body.insertAdjacentHTML('beforeend', modalHTML);
     
-    // Get modal elements
     const modal = document.getElementById('brochure-modal');
     const backdrop = document.getElementById('modal-backdrop');
     const closeBtn = document.getElementById('close-modal');
     const submitBtn = document.getElementById('submit-brochure');
     const form = document.getElementById('brochure-form');
     
-    // Close modal function
     function closeModal() {
         modal.classList.add('hidden');
         document.body.style.overflow = 'auto';
     }
     
-    // Open modal function
-    function openModal() {
-        modal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-    }
-    
-    // Event listeners
     backdrop.addEventListener('click', closeModal);
     closeBtn.addEventListener('click', closeModal);
     
@@ -1088,7 +1076,6 @@ function initializeBrochureModal() {
         }
     });
     
-    // Close on escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
             closeModal();
@@ -1125,20 +1112,15 @@ function attachCompareEventListeners() {
             const courseId = this.getAttribute('data-course-id') || this.getAttribute('data-specialization-id');
             const courseType = this.getAttribute('data-course-id') ? 'course' : 'specialization';
             
-            // Toggle compare state
             this.classList.toggle('compared');
             
             if (this.classList.contains('compared')) {
                 this.innerHTML = '<i class="fas fa-check"></i> Added';
                 this.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-                
-                // Show notification
                 showNotification('Program added to compare list!', 'success');
             } else {
                 this.innerHTML = courseType === 'course' ? '<i class="fas fa-plus"></i> Compare' : '<i class="fas fa-search"></i> Explore Programs';
                 this.style.background = '';
-                
-                // Show notification
                 showNotification('Program removed from compare list.', 'info');
             }
         });
@@ -1147,26 +1129,21 @@ function attachCompareEventListeners() {
 
 // Notification system
 function showNotification(message, type = 'info') {
-    // Remove existing notification
     const existingNotification = document.querySelector('.notification');
     if (existingNotification) {
         existingNotification.remove();
     }
     
-    // Create notification element
     const notification = document.createElement('div');
     notification.className = `notification fixed top-4 right-4 z-50 px-6 py-3 rounded-lg shadow-lg transform transition-transform duration-300 ${type === 'success' ? 'bg-green-500' : 'bg-blue-500'} text-white`;
     notification.textContent = message;
     
-    // Add to DOM
     document.body.appendChild(notification);
     
-    // Show notification
     setTimeout(() => {
         notification.classList.add('translate-y-0');
     }, 10);
     
-    // Remove after 3 seconds
     setTimeout(() => {
         notification.classList.remove('translate-y-0');
         notification.classList.add('translate-y-full');
@@ -1176,15 +1153,6 @@ function showNotification(message, type = 'info') {
         }, 300);
     }, 3000);
 }
-
-// Initialize on page load
-window.addEventListener('load', function() {
-    // Add loading animation to cards
-    const cards = document.querySelectorAll('.degree-card, .certification-card, .university-card');
-    cards.forEach(card => {
-        card.classList.add('fade-in');
-    });
-});
 
 // Initialize animated counters
 function initializeAnimatedCounters() {
@@ -1207,3 +1175,28 @@ function initializeAnimatedCounters() {
         }, 30);
     });
 }
+
+// Fix for page load
+window.addEventListener('load', function() {
+    console.log('Page fully loaded');
+    
+    // Force redraw for any rendering issues
+    document.body.style.display = 'none';
+    document.body.offsetHeight;
+    document.body.style.display = '';
+    
+    window.scrollTo(0, 0);
+    
+    // Check if universities rendered
+    setTimeout(() => {
+        const universityCards = document.querySelectorAll('.university-card');
+        console.log(`Found ${universityCards.length} university cards`);
+        
+        universityCards.forEach((card, index) => {
+            const img = card.querySelector('img');
+            if (img) {
+                console.log(`Card ${index + 1} image src:`, img.src);
+            }
+        });
+    }, 1000);
+});

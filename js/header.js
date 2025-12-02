@@ -72,14 +72,23 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Smooth scrolling for anchor links
+        // Smooth scrolling for anchor links - UPDATED for new IDs
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
                 
-                const targetElement = document.querySelector(targetId);
+                let targetElement;
+                
+                // Handle special case for duplicate IDs
+                if (targetId === '#why-us') {
+                    // For "Why Us" link, scroll to the grid layout section
+                    targetElement = document.querySelector('#why-us');
+                } else {
+                    targetElement = document.querySelector(targetId);
+                }
+                
                 if (targetElement) {
                     // Close mobile menu if open
                     if (mobileMenu && !mobileMenu.classList.contains('hidden')) {

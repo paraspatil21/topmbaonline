@@ -17,6 +17,8 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <!-- Add this meta tag for better mobile experience -->
+    <meta name="theme-color" content="#0ea5e9">
 </head>
 <body class="font-sans bg-white text-gray-800">
     <!-- Header will be injected by header.js -->
@@ -80,29 +82,46 @@
             <button class="banner-nav next" id="next-banner"><i class="fas fa-chevron-right"></i></button>
         </section>
 
-        <!-- Top Universities Section -->
+        <!-- NEW: Top Universities Section - REDESIGNED -->
         <section id="top-universities" class="section-padding bg-gradient-to-r from-blue-50 to-blue-100">
             <div class="container">
                 <h2 class="section-title">Compare Courses from Top Providers</h2>
-                <div class="university-grid">
+                <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">Partnered with India's top-ranked universities to bring you the best online MBA programs</p>
+                
+                <!-- University Grid -->
+                <div class="university-grid-new">
                     <!-- Universities will be populated by JavaScript -->
                 </div>
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <h3 class="stat-number">5000+</h3>
-                        <p class="stat-text">Students Enrolled</p>
+                
+                <!-- Stats Section -->
+                <div class="stats-grid-new mt-16 pt-12 border-t border-blue-200">
+                    <div class="stat-card-new">
+                        <div class="stat-icon-new">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="stat-number-new">5000+</h3>
+                        <p class="stat-text-new">Students Enrolled</p>
                     </div>
-                    <div class="stat-card">
-                        <h3 class="stat-number">2000+</h3>
-                        <p class="stat-text">Students Placed</p>
+                    <div class="stat-card-new">
+                        <div class="stat-icon-new">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3 class="stat-number-new">2000+</h3>
+                        <p class="stat-text-new">Students Placed</p>
                     </div>
-                    <div class="stat-card">
-                        <h3 class="stat-number">500+</h3>
-                        <p class="stat-text">Courses Available</p>
+                    <div class="stat-card-new">
+                        <div class="stat-icon-new">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3 class="stat-number-new">500+</h3>
+                        <p class="stat-text-new">Courses Available</p>
                     </div>
-                    <div class="stat-card">
-                        <h3 class="stat-number">50+</h3>
-                        <p class="stat-text">Universities</p>
+                    <div class="stat-card-new">
+                        <div class="stat-icon-new">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <h3 class="stat-number-new">50+</h3>
+                        <p class="stat-text-new">Partner Universities</p>
                     </div>
                 </div>
             </div>
@@ -117,43 +136,140 @@
                 </div>
             </div>
         </section>
-
-        <!-- University & Course Matrix -->
-        <section id="university-course-matrix" class="section-padding bg-gray-50">
+        
+        <!-- Why We're the Best Choice Section - SPLIT LAYOUT -->
+        <section id="why-us-split" class="section-padding bg-gray-50">
             <div class="container">
-                <h2 class="section-title">Top Universities & Their Popular MBA Specializations</h2>
-                <div class="matrix-container">
-                    <!-- Will be populated by JavaScript -->
+                <h2 class="section-title">Why We're the Best Choice?</h2>
+                <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">Explore top online courses from leading institutions with personalized recommendations, exclusive scholarships, and flexible learning options tailored to your schedule.</p>
+                
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
+                    <div class="grid grid-cols-1 lg:grid-cols-2">
+                        <!-- Left Side: Image/Visual Section -->
+                        <div class="bg-gradient-to-br from-blue-600 to-blue-800 p-8 lg:p-12 flex flex-col justify-center">
+                            <div class="text-white mb-8 lg:mb-12">
+                                <h3 class="text-3xl lg:text-4xl font-bold mb-4">Your Success Is Our Priority</h3>
+                                <p class="text-blue-100 text-lg">We combine industry-leading expertise with personalized support to help you achieve your career goals.</p>
+                            </div>
+                            
+                            <!-- Visual representation or placeholder for image -->
+                            <div class="relative">
+                                <div class="w-full h-64 lg:h-80 bg-gradient-to-tr from-blue-500/30 to-blue-700/30 rounded-2xl flex items-center justify-center">
+                                    <!-- Placeholder for image - Replace with actual image -->
+                                    <div class="text-center">
+                                        <div class="w-20 h-20 lg:w-24 lg:h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                                            <i class="fas fa-graduation-cap text-4xl lg:text-5xl text-white"></i>
+                                        </div>
+                                        <p class="text-white/90 text-lg lg:text-xl font-medium">Join Thousands of<br>Successful MBA Graduates</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Stats overlay -->
+                                <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-white rounded-xl shadow-lg p-4 w-4/5">
+                                    <div class="flex items-center justify-around">
+                                        <div class="text-center">
+                                            <div class="text-2xl font-bold text-blue-600">5000+</div>
+                                            <div class="text-sm text-gray-600">Students Enrolled</div>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="text-2xl font-bold text-blue-600">95%</div>
+                                            <div class="text-sm text-gray-600">Success Rate</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Right Side: Feature Cards -->
+                        <div class="p-8 lg:p-12">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Top Course Comparison Card -->
+                                <div class="feature-card-right">
+                                    <div class="feature-icon-right">
+                                        <i class="fas fa-balance-scale"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="feature-title-right">Top Course Comparison</h3>
+                                        <p class="feature-description-right">Access India's leading online course comparison platform for effortless discovery and comparison of top providers.</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Personalized Guidance Card -->
+                                <div class="feature-card-right">
+                                    <div class="feature-icon-right">
+                                        <i class="fas fa-user-graduate"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="feature-title-right">Personalized Guidance</h3>
+                                        <p class="feature-description-right">Receive tailored career mentoring and unbiased course recommendations to help you make informed decisions.</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Exclusive Benefits Card -->
+                                <div class="feature-card-right">
+                                    <div class="feature-icon-right">
+                                        <i class="fas fa-gift"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="feature-title-right">Exclusive Benefits</h3>
+                                        <p class="feature-description-right">Enjoy exclusive scholarships, special offers, and no-cost EMI options to make education more accessible.</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Comprehensive Support Card -->
+                                <div class="feature-card-right">
+                                    <div class="feature-icon-right">
+                                        <i class="fas fa-hands-helping"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="feature-title-right">Comprehensive Support</h3>
+                                        <p class="feature-description-right">Benefit from extensive post-enrollment support, including community access and placement assistance.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Additional CTA on right side -->
+                            <div class="mt-8 pt-8 border-t border-gray-100">
+                                <div class="text-center lg:text-left">
+                                    <h4 class="text-xl font-bold text-gray-800 mb-3">Ready to Start Your MBA Journey?</h4>
+                                    <a href="#mba-courses" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300">
+                                        <i class="fas fa-search mr-2"></i>
+                                        Explore All MBA Programs
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Why Choose Us Section -->
+        <!-- Why Choose Us Section - Grid Layout -->
         <section id="why-us" class="section-padding">
             <div class="container">
-                <h2 class="section-title">Why We're the Best Choice?</h2>
-                <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">Explore top online MBA courses from leading institutions with personalized recommendations, exclusive scholarships, and flexible learning options tailored to your schedule.</p>
+                <h2 class="section-title">Why Choose Us?</h2>
+                <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">Explore top online courses from leading institutions with personalized recommendations, exclusive scholarships, and flexible learning options tailored to your schedule.</p>
                 <div class="features-grid">
                     <div class="feature-card">
                         <div class="feature-icon">
-                            <i class="fas fa-balance-scale"></i>
+                            <i class="fas fa-chart-line"></i>
                         </div>
                         <h3 class="feature-title">Top Course Comparison</h3>
-                        <p class="feature-description">Access India's leading online course comparison platform for effortless discovery and comparison of top MBA providers.</p>
+                        <p class="feature-description">Access India's leading online course comparison platform for effortless discovery and comparison of top providers.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">
                             <i class="fas fa-user-graduate"></i>
                         </div>
                         <h3 class="feature-title">Personalized Guidance</h3>
-                        <p class="feature-description">Receive tailored career mentoring and unbiased MBA program recommendations to help you make informed decisions.</p>
+                        <p class="feature-description">Receive tailored career mentoring and unbiased course recommendations to help you make informed decisions.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">
                             <i class="fas fa-gift"></i>
                         </div>
                         <h3 class="feature-title">Exclusive Benefits</h3>
-                        <p class="feature-description">Enjoy exclusive scholarships, special offers, and no-cost EMI options to make MBA education more accessible.</p>
+                        <p class="feature-description">Enjoy exclusive scholarships, special offers, and no-cost EMI options to make education more accessible.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">
@@ -188,8 +304,8 @@
                                 <div class="bg-gradient-to-r from-blue-50 to-blue-100 p-4 rounded-xl">
                                     <div class="flex items-center justify-between">
                                         <div>
-                                            <p class="text-sm text-gray-600">Total MBA Programs</p>
-                                            <p class="text-2xl font-bold text-gray-800">850+</p>
+                                            <p class="text-sm text-gray-600">MBA Programs</p>
+                                            <p class="text-2xl font-bold text-gray-800"></p>
                                         </div>
                                         <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
                                             <i class="fas fa-graduation-cap text-white"></i>
@@ -200,8 +316,8 @@
                                 <div class="bg-gradient-to-r from-yellow-50 to-yellow-100 p-4 rounded-xl">
                                     <div class="flex items-center justify-between">
                                         <div>
-                                            <p class="text-sm text-gray-600">New This Month</p>
-                                            <p class="text-2xl font-bold text-gray-800">24+</p>
+                                            <p class="text-sm text-gray-600">New courses</p>
+                                            <p class="text-2xl font-bold text-gray-800"></p>
                                         </div>
                                         <div class="w-12 h-12 bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-full flex items-center justify-center">
                                             <i class="fas fa-plus text-white"></i>
@@ -359,9 +475,6 @@
                 
                 <div class="genai-filters flex justify-center flex-wrap gap-2 mb-8">
                     <button class="filter-btn active px-4 py-2 rounded-full bg-blue-600 text-white font-medium" data-filter="all">All</button>
-                    <button class="filter-btn px-4 py-2 rounded-full bg-white text-blue-600 border border-blue-200 font-medium hover:bg-blue-50" data-filter="beginner">Beginner</button>
-                    <button class="filter-btn px-4 py-2 rounded-full bg-white text-blue-600 border border-blue-200 font-medium hover:bg-blue-50" data-filter="top-rated">Top Rated</button>
-                    <button class="filter-btn px-4 py-2 rounded-full bg-white text-blue-600 border border-blue-200 font-medium hover:bg-blue-50" data-filter="popular">Popular</button>
                 </div>
                 
                 <div class="genai-courses-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
