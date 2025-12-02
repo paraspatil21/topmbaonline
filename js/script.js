@@ -8,7 +8,10 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeFilterButtons();
     initializeTestimonialSlider();
     initializeCounters();
-    initializeCharts(); // Removed initializeChartFilters()
+    initializeCharts();
+    
+    // Initialize brochure modal
+    initializeBrochureModal();
     
     // Search functionality
     initializeSearch();
@@ -26,18 +29,18 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeData() {
     // Top Universities Data
     const universities = [
-        { id: 1, name: 'IIM Ahmedabad', shortName: 'IIMA' },
-        { id: 2, name: 'Jain University', shortName: 'Jain' },
-        { id: 3, name: 'IIT Delhi', shortName: 'IITD' },
-        { id: 4, name: 'Amity University', shortName: 'Amity' },
-        { id: 5, name: 'Coursera', shortName: 'Coursera' },
-        { id: 6, name: 'Google', shortName: 'Google' },
-        { id: 7, name: 'IIM Kolkata', shortName: 'IIMK' },
-        { id: 8, name: 'KPMG', shortName: 'KPMG' },
-        { id: 9, name: 'Manipal University', shortName: 'Manipal' },
-        { id: 10, name: 'DY Patil University', shortName: 'DY Patil' },
-        { id: 11, name: 'UPES', shortName: 'UPES' },
-        { id: 12, name: 'Chandigarh University', shortName: 'Chandigarh' }
+        { id: 1, name: 'NMIMS University', shortName: 'NMIMS' },
+        { id: 2, name: 'VIT University', shortName: 'VIT' },
+        { id: 3, name: 'IIM Ahmedabad', shortName: 'IIMA' },
+        { id: 4, name: 'Jain University', shortName: 'Jain' },
+        { id: 5, name: 'Amity University', shortName: 'Amity' },
+        { id: 6, name: 'Manipal University', shortName: 'Manipal' },
+        { id: 7, name: 'DY Patil University', shortName: 'DY Patil' },
+        { id: 8, name: 'UPES', shortName: 'UPES' },
+        { id: 9, name: 'Shoolini University', shortName: 'Shoolini' },
+        { id: 10, name: 'Chandigarh University', shortName: 'Chandigarh' },
+        { id: 11, name: 'Sikkim Manipal University', shortName: 'SMU' },
+        { id: 12, name: 'IIT Delhi', shortName: 'IITD' }
     ];
 
     // MBA Specializations Data
@@ -201,27 +204,43 @@ function initializeData() {
         }
     ];
 
-    // University-Course Matrix Data (removed HR Management column)
+    // Updated University-Course Matrix Data with all universities
     const universityCourses = [
         {
             university: 'Amity University Online',
-            courses: ['MBA in Digital Marketing', 'MBA in Hospital Administration', 'MBA in Business Analytics', 'MBA in Agribusiness']
+            courses: ['✓', '✓', '✓', '✓', '✓', '✓']
         },
         {
             university: 'Jain University',
-            courses: ['MBA in Digital Marketing', 'MBA in Business Analytics', 'MBA in Hospitality', 'MBA in Agribusiness']
+            courses: ['✓', '✓', '✓', '✓', '✓', '✓']
         },
         {
             university: 'Manipal University Jaipur',
-            courses: ['MBA in Digital Marketing', 'MBA in Hospitality', 'MBA in Business Analytics', 'MBA in Petroleum']
+            courses: ['✓', '✓', '✓', '✓', '✓', '✓']
         },
         {
             university: 'DY Patil University',
-            courses: ['MBA in Hospital Administration', 'MBA in Business Analytics', 'MBA in Digital Marketing', 'MBA in Agribusiness']
+            courses: ['✓', '✓', '✓', '✓', '✓', '✓']
         },
         {
             university: 'UPES',
-            courses: ['MBA in Digital Marketing', 'MBA in Petroleum', 'MBA in Business Analytics', 'MBA in Hospitality']
+            courses: ['✓', '✓', '✓', '✓', '✓', '✓']
+        },
+        {
+            university: 'Shoolini University',
+            courses: ['✓', '✓', '✓', '✓', '✓', '✓']
+        },
+        {
+            university: 'NMIMS University',
+            courses: ['✓', '✓', '✓', '✓', '✓', '✓']
+        },
+        {
+            university: 'Chandigarh University',
+            courses: ['✓', '✓', '✓', '✓', '✓', '✓']
+        },
+        {
+            university: 'Sikkim Manipal University',
+            courses: ['✓', '✓', '✓', '✓', '✓', '✓']
         }
     ];
 
@@ -363,48 +382,80 @@ function renderFilteredMBACourses(courses) {
     
     if (courses.length === 0) {
         coursesGrid.innerHTML = `
-            <div class="col-span-full text-center py-8">
-                <i class="fas fa-search text-4xl text-gray-300 mb-4"></i>
-                <p class="text-gray-500">No courses found for this filter.</p>
+            <div class="col-span-3 text-center py-12">
+                <div class="bg-white rounded-2xl p-8 shadow-lg max-w-md mx-auto">
+                    <i class="fas fa-search text-5xl text-gray-300 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-700 mb-2">No courses found</h3>
+                    <p class="text-gray-500 mb-6">Try a different filter or browse all MBA programs.</p>
+                    <button class="filter-btn active px-6 py-3 rounded-lg" data-filter="all">
+                        Show All Programs
+                    </button>
+                </div>
             </div>
         `;
+        
+        // Re-attach event listener to the "Show All Programs" button
+        const showAllBtn = coursesGrid.querySelector('.filter-btn');
+        if (showAllBtn) {
+            showAllBtn.addEventListener('click', () => {
+                const allBtn = document.querySelector('.genai-filters .filter-btn[data-filter="all"]');
+                if (allBtn) {
+                    allBtn.click();
+                }
+            });
+        }
         return;
     }
     
     courses.forEach(course => {
         const courseCard = document.createElement('div');
-        courseCard.className = 'certification-card fade-in';
+        courseCard.className = 'mba-square-card fade-in';
+        
+        // Get university logo class
+        const logoClass = getUniversityLogoClass(course.provider);
+        const logoText = getUniversityLogoText(course.provider);
+        
         courseCard.innerHTML = `
-            <div class="certification-header">
-                <div class="certification-logo">
-                    <i class="fas fa-graduation-cap"></i>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg">${course.title}</h4>
-                    <p class="text-gray-600">${course.provider}</p>
+            <div class="mba-card-header">
+                <h3 class="mba-card-title">${course.title}</h3>
+                <div class="mba-card-provider">
+                    <span class="university-logo ${logoClass}">${logoText}</span>
+                    ${course.provider}
                 </div>
             </div>
-            <div class="mb-4">
-                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded mr-2">
-                    <i class="fas fa-user-graduate mr-1"></i>${course.level}
-                </span>
-                <span class="inline-block bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">
-                    <i class="far fa-clock mr-1"></i>${course.duration}
-                </span>
-            </div>
-            <div class="flex justify-between items-center">
-                <div class="text-lg font-bold ${course.price.includes('Free') ? 'text-green-600' : 'text-gray-800'}">
-                    ${course.price}
+            <div class="mba-card-body">
+                <div class="mba-card-badges">
+                    <span class="mba-badge level">
+                        <i class="fas fa-user-graduate"></i>
+                        ${course.level}
+                    </span>
+                    <span class="mba-badge duration">
+                        <i class="far fa-clock"></i>
+                        ${course.duration}
+                    </span>
+                    ${course.tags.map(tag => `
+                        <span class="mba-badge tag">
+                            ${tag === 'top-rated' ? '<i class="fas fa-star"></i> Top Rated' : ''}
+                            ${tag === 'popular' ? '<i class="fas fa-fire"></i> Popular' : ''}
+                            ${tag === 'beginner' ? '<i class="fas fa-seedling"></i> Beginner' : ''}
+                        </span>
+                    `).join('')}
                 </div>
-                <button class="compare-btn" data-course-id="${course.id}">
-                    <i class="fas fa-plus"></i> Compare
+                <div class="mba-card-price">
+                    <div class="mba-price">${course.price}</div>
+                    <div class="mba-price-note">Complete Program Fee</div>
+                </div>
+            </div>
+            <div class="mba-card-footer">
+                <button class="mba-brochure-btn" data-course-id="${course.id}">
+                    <i class="fas fa-info-circle"></i> Get More Information
                 </button>
             </div>
         `;
         coursesGrid.appendChild(courseCard);
     });
     
-    attachCompareEventListeners();
+    attachBrochureEventListeners();
 }
 
 // Testimonial Slider
@@ -565,7 +616,13 @@ function initializeCharts() {
                 cutout: '70%',
                 plugins: {
                     legend: {
-                        display: false
+                        display: true,
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            usePointStyle: true,
+                            pointStyle: 'circle'
+                        }
                     },
                     tooltip: {
                         backgroundColor: 'rgba(0, 0, 0, 0.8)',
@@ -698,6 +755,7 @@ function renderMBASpecializations() {
     
     attachCompareEventListeners();
 }
+
 function renderMBACourses() {
     const coursesGrid = document.querySelector('.genai-courses-grid');
     if (!coursesGrid || !window.appData.mbaCourses) return;
@@ -744,100 +802,85 @@ function renderMBACourses() {
                 </div>
             </div>
             <div class="mba-card-footer">
-                <button class="mba-compare-btn" data-course-id="${course.id}">
-                    <i class="fas fa-plus"></i> Compare
+                <button class="mba-brochure-btn" data-course-id="${course.id}">
+                    <i class="fas fa-info-circle"></i> Get More Information
                 </button>
             </div>
         `;
         coursesGrid.appendChild(courseCard);
     });
     
-    attachCompareEventListeners();
+    attachBrochureEventListeners();
 }
 
-function renderFilteredMBACourses(courses) {
-    const coursesGrid = document.querySelector('.genai-courses-grid');
+function renderTestimonials() {
+    // Handled by initializeTestimonialSlider
+}
+
+function renderBlogs() {
+    const blogsGrid = document.querySelector('.blogs-grid');
+    if (!blogsGrid || !window.appData.blogs) return;
     
-    if (!coursesGrid) return;
+    blogsGrid.innerHTML = '';
     
-    coursesGrid.innerHTML = '';
-    
-    if (courses.length === 0) {
-        coursesGrid.innerHTML = `
-            <div class="col-span-3 text-center py-12">
-                <div class="bg-white rounded-2xl p-8 shadow-lg max-w-md mx-auto">
-                    <i class="fas fa-search text-5xl text-gray-300 mb-4"></i>
-                    <h3 class="text-xl font-bold text-gray-700 mb-2">No courses found</h3>
-                    <p class="text-gray-500 mb-6">Try a different filter or browse all MBA programs.</p>
-                    <button class="filter-btn active px-6 py-3 rounded-lg" data-filter="all">
-                        Show All Programs
-                    </button>
+    window.appData.blogs.forEach(blog => {
+        const blogCard = document.createElement('article');
+        blogCard.className = 'blog-card fade-in';
+        blogCard.innerHTML = `
+            <div class="blog-image">
+                <i class="fas fa-newspaper"></i>
+            </div>
+            <div class="blog-content">
+                <div class="blog-meta">
+                    <span>${blog.date}</span>
+                    <span>${blog.readTime}</span>
                 </div>
+                <h3 class="text-xl font-bold mb-2">${blog.title}</h3>
+                <p class="text-gray-600">${blog.description}</p>
+                <a href="#" class="inline-block mt-4 text-blue-600 font-medium hover:text-blue-800">
+                    Read More <i class="fas fa-arrow-right ml-1"></i>
+                </a>
             </div>
         `;
-        
-        // Re-attach event listener to the "Show All Programs" button
-        const showAllBtn = coursesGrid.querySelector('.filter-btn');
-        if (showAllBtn) {
-            showAllBtn.addEventListener('click', () => {
-                const allBtn = document.querySelector('.genai-filters .filter-btn[data-filter="all"]');
-                if (allBtn) {
-                    allBtn.click();
-                }
-            });
-        }
-        return;
-    }
-    
-    courses.forEach(course => {
-        const courseCard = document.createElement('div');
-        courseCard.className = 'mba-square-card fade-in';
-        
-        // Get university logo class
-        const logoClass = getUniversityLogoClass(course.provider);
-        const logoText = getUniversityLogoText(course.provider);
-        
-        courseCard.innerHTML = `
-            <div class="mba-card-header">
-                <h3 class="mba-card-title">${course.title}</h3>
-                <div class="mba-card-provider">
-                    <span class="university-logo ${logoClass}">${logoText}</span>
-                    ${course.provider}
-                </div>
-            </div>
-            <div class="mba-card-body">
-                <div class="mba-card-badges">
-                    <span class="mba-badge level">
-                        <i class="fas fa-user-graduate"></i>
-                        ${course.level}
-                    </span>
-                    <span class="mba-badge duration">
-                        <i class="far fa-clock"></i>
-                        ${course.duration}
-                    </span>
-                    ${course.tags.map(tag => `
-                        <span class="mba-badge tag">
-                            ${tag === 'top-rated' ? '<i class="fas fa-star"></i> Top Rated' : ''}
-                            ${tag === 'popular' ? '<i class="fas fa-fire"></i> Popular' : ''}
-                            ${tag === 'beginner' ? '<i class="fas fa-seedling"></i> Beginner' : ''}
-                        </span>
-                    `).join('')}
-                </div>
-                <div class="mba-card-price">
-                    <div class="mba-price">${course.price}</div>
-                    <div class="mba-price-note">Complete Program Fee</div>
-                </div>
-            </div>
-            <div class="mba-card-footer">
-                <button class="mba-compare-btn" data-course-id="${course.id}">
-                    <i class="fas fa-plus"></i> Compare
-                </button>
-            </div>
-        `;
-        coursesGrid.appendChild(courseCard);
+        blogsGrid.appendChild(blogCard);
     });
+}
+
+function renderUniversityCourseMatrix() {
+    const matrixContainer = document.querySelector('.matrix-container');
+    if (!matrixContainer || !window.appData.universityCourses) return;
     
-    attachCompareEventListeners();
+    const table = document.createElement('table');
+    table.className = 'matrix-table';
+    table.innerHTML = `
+        <thead>
+            <tr>
+                <th>University</th>
+                <th>Digital Marketing</th>
+                <th>Hospital Admin</th>
+                <th>Business Analytics</th>
+                <th>Agribusiness</th>
+                <th>Hospitality</th>
+                <th>Petroleum</th>
+            </tr>
+        </thead>
+        <tbody>
+            ${window.appData.universityCourses.map(university => `
+                <tr>
+                    <td><strong>${university.university}</strong></td>
+                    <td>${university.courses[0]}</td>
+                    <td>${university.courses[1]}</td>
+                    <td>${university.courses[2]}</td>
+                    <td>${university.courses[3]}</td>
+                    <td>${university.courses[4]}</td>
+                    <td>${university.courses[5]}</td>
+                </tr>
+            `).join('')}
+        </tbody>
+    `;
+    
+    matrixContainer.innerHTML = '';
+    matrixContainer.appendChild(table);
 }
 
 // Helper functions for university logos
@@ -846,6 +889,13 @@ function getUniversityLogoClass(provider) {
     if (provider.includes('VIT')) return 'vit';
     if (provider.includes('IIM')) return 'iim';
     if (provider.includes('Jain')) return 'jain';
+    if (provider.includes('Amity')) return 'amity';
+    if (provider.includes('Manipal')) return 'manipal';
+    if (provider.includes('DY Patil')) return 'dy-patil';
+    if (provider.includes('UPES')) return 'upes';
+    if (provider.includes('Shoolini')) return 'shoolini';
+    if (provider.includes('Chandigarh')) return 'chandigarh';
+    if (provider.includes('Sikkim')) return 'sikkim';
     return '';
 }
 
@@ -854,22 +904,187 @@ function getUniversityLogoText(provider) {
     if (provider.includes('VIT')) return 'VI';
     if (provider.includes('IIM')) return 'II';
     if (provider.includes('Jain')) return 'JN';
+    if (provider.includes('Amity')) return 'AM';
+    if (provider.includes('Manipal')) return 'MA';
+    if (provider.includes('DY Patil')) return 'DY';
+    if (provider.includes('UPES')) return 'UP';
+    if (provider.includes('Shoolini')) return 'SH';
+    if (provider.includes('Chandigarh')) return 'CH';
+    if (provider.includes('Sikkim')) return 'SM';
     return provider.substring(0, 2);
 }
 
-// Update the attachCompareEventListeners function to work with new button class
-function attachCompareEventListeners() {
-    const compareButtons = document.querySelectorAll('.mba-compare-btn, .compare-btn');
+// Brochure Modal functionality
+function initializeBrochureModal() {
+    // Create modal HTML
+    const modalHTML = `
+        <div id="brochure-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
+            <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+                <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" id="modal-backdrop"></div>
+                <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+                <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                        <div class="sm:flex sm:items-start">
+                            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-4">Get Your Brochure</h3>
+                                <form id="brochure-form" class="space-y-4">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                                            <input type="text" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="First Name">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                                            <input type="text" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Last Name">
+                                            <div class="mt-1">
+                                                <label class="inline-flex items-center">
+                                                    <input type="checkbox" class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                                                    <span class="ml-2 text-sm text-gray-600">I Don't have a Surname or Last Name</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                        <input type="email" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Email">
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Country</label>
+                                        <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                            <option>India</option>
+                                            <option>Other Countries</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Mobile Number</label>
+                                        <div class="flex">
+                                            <div class="w-20">
+                                                <input type="text" value="+91" readonly class="w-full px-3 py-2 border border-gray-300 rounded-l-md bg-gray-100">
+                                            </div>
+                                            <input type="tel" required class="flex-1 px-3 py-2 border border-gray-300 rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Phone">
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Work Experience</label>
+                                        <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                            <option>Select Work Experience</option>
+                                            <option>0-1 years</option>
+                                            <option>1-3 years</option>
+                                            <option>3-5 years</option>
+                                            <option>5+ years</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Graduation Year/Expected Graduation Year</label>
+                                        <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                            <option>Select Graduation Year</option>
+                                            <option>2024</option>
+                                            <option>2025</option>
+                                            <option>2026</option>
+                                            <option>2027</option>
+                                            <option>2028</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">City</label>
+                                        <input type="text" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="City">
+                                    </div>
+                                    
+                                    <div class="text-xs text-gray-600">
+                                        <p>By clicking the button below, you agree to receive communications via Email/Call/WhatsApp/SMS from VIT and its associates about this programme and other relevant programmes. This will override registry on DND/NDNC.</p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                        <button type="button" id="submit-brochure" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
+                            Get Brochure
+                        </button>
+                        <button type="button" id="close-modal" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
     
-    compareButtons.forEach(button => {
-        // Remove existing event listeners to avoid duplicates
-        button.replaceWith(button.cloneNode(true));
+    // Add modal to body
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    
+    // Get modal elements
+    const modal = document.getElementById('brochure-modal');
+    const backdrop = document.getElementById('modal-backdrop');
+    const closeBtn = document.getElementById('close-modal');
+    const submitBtn = document.getElementById('submit-brochure');
+    const form = document.getElementById('brochure-form');
+    
+    // Close modal function
+    function closeModal() {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+    
+    // Open modal function
+    function openModal() {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    // Event listeners
+    backdrop.addEventListener('click', closeModal);
+    closeBtn.addEventListener('click', closeModal);
+    
+    submitBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (form.checkValidity()) {
+            alert('Thank you! Your brochure request has been submitted successfully.');
+            closeModal();
+        } else {
+            form.reportValidity();
+        }
     });
     
-    // Re-select the buttons
-    const newCompareButtons = document.querySelectorAll('.mba-compare-btn, .compare-btn');
+    // Close on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+            closeModal();
+        }
+    });
+}
+
+// Attach brochure event listeners
+function attachBrochureEventListeners() {
+    const brochureButtons = document.querySelectorAll('.mba-brochure-btn');
     
-    newCompareButtons.forEach(button => {
+    brochureButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const courseId = this.getAttribute('data-course-id');
+            openBrochureModal(courseId);
+        });
+    });
+}
+
+function openBrochureModal(courseId) {
+    const modal = document.getElementById('brochure-modal');
+    if (modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// Compare functionality
+function attachCompareEventListeners() {
+    const compareButtons = document.querySelectorAll('.compare-btn');
+    
+    compareButtons.forEach(button => {
         button.addEventListener('click', function() {
             const courseId = this.getAttribute('data-course-id') || this.getAttribute('data-specialization-id');
             const courseType = this.getAttribute('data-course-id') ? 'course' : 'specialization';
@@ -878,14 +1093,14 @@ function attachCompareEventListeners() {
             this.classList.toggle('compared');
             
             if (this.classList.contains('compared')) {
-                this.innerHTML = '<i class="fas fa-check"></i> Added to Compare';
+                this.innerHTML = '<i class="fas fa-check"></i> Added';
                 this.style.background = 'linear-gradient(135deg, #10b981, #059669)';
                 
                 // Show notification
                 showNotification('Program added to compare list!', 'success');
             } else {
                 this.innerHTML = courseType === 'course' ? '<i class="fas fa-plus"></i> Compare' : '<i class="fas fa-search"></i> Explore Programs';
-                this.style.background = 'linear-gradient(135deg, var(--primary), var(--primary-dark))';
+                this.style.background = '';
                 
                 // Show notification
                 showNotification('Program removed from compare list.', 'info');
@@ -935,7 +1150,7 @@ window.addEventListener('load', function() {
     });
 });
 
-// Initialize animated counters (missing function)
+// Initialize animated counters
 function initializeAnimatedCounters() {
     const animatedNumbers = document.querySelectorAll('.animated-number');
     
