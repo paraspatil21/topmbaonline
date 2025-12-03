@@ -304,37 +304,37 @@ function initializeData() {
         }
     ];
 
-    // Why Choose Us Data (NEW CONTENT)
-    const whyChooseUsData = [
-        {
-            id: 1,
-            number: '01',
-            title: 'Personalized, Proven Guidance',
-            description: '97% say we made the right match, real guidance, never generic.',
-            icon: 'fa-user-check'
-        },
-        {
-            id: 2,
-            number: '02',
-            title: 'Accredited Universities, Expert Faculty',
-            description: 'Only top universities and expert faculty-no shortcuts.',
-            icon: 'fa-university'
-        },
-        {
-            id: 3,
-            number: '03',
-            title: 'End-to-End Support',
-            description: 'Full support, start to finish enrollment, classes, mentorship, placements.',
-            icon: 'fa-hands-helping'
-        },
-        {
-            id: 4,
-            number: '04',
-            title: 'Real Results is Reasonable',
-            description: '80%+ placements, ₹6.5L+ starting salary, 88% completion-affordable, with EMI options.',
-            icon: 'fa-chart-line'
-        }
-    ];
+   // Why Choose Us Data (NEW CONTENT)
+const whyChooseUsData = [
+    {
+        id: 1,
+        number: '01',
+        title: 'Personalized, Proven Guidance',
+        description: '97% say we made the right match, real guidance, never generic.',
+        icon: 'fa-user-check'
+    },
+    {
+        id: 2,
+        number: '02',
+        title: 'Accredited Universities, Expert Faculty',
+        description: 'Only top universities and expert faculty-no shortcuts.',
+        icon: 'fa-university'
+    },
+    {
+        id: 3,
+        number: '03',
+        title: 'End-to-End Support',
+        description: 'Full support, start to finish enrollment, classes, mentorship, placements.',
+        icon: 'fa-hands-helping'
+    },
+    {
+        id: 4,
+        number: '04',
+        title: 'Real Results is Reasonable',
+        description: '80%+ placements, ₹6.5L+ starting salary, 88% completion-affordable, with EMI options.',
+        icon: 'fa-chart-line'
+    }
+];
 
     // Store data globally
     window.appData = {
@@ -374,10 +374,10 @@ function renderWhyChooseUs() {
         featureCard.className = 'feature-card fade-in';
         
         featureCard.innerHTML = `
-            <div class="feature-icon" style="background: #fabd05;">
-                <i class="fas ${item.icon}" style="color: white;"></i>
+            <div class="feature-icon" style="background: #fabd05 !important;">
+                <i class="fas ${item.icon}" style="color: white !important;"></i>
             </div>
-            <div class="text-center mb-2" style="font-size: 2rem; font-weight: 800; color: #002c5c;">
+            <div class="text-center mb-2" style="font-size: 1.5rem; font-weight: 800; color: #002c5c;">
                 ${item.number}
             </div>
             <h3 class="feature-title" style="color: #002c5c;">${item.title}</h3>
@@ -387,9 +387,19 @@ function renderWhyChooseUs() {
         featuresGrid.appendChild(featureCard);
     });
     
-    // Make sure the grid is 2x2
-    if (window.innerWidth >= 768) {
+    // Force 2x2 grid on mobile
+    if (window.innerWidth < 768) {
         featuresGrid.style.gridTemplateColumns = 'repeat(2, 1fr)';
+        featuresGrid.style.overflowX = 'hidden';
+        
+        // Add specific mobile styling
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.style.minWidth = 'auto';
+            card.style.display = 'flex';
+            card.style.flexDirection = 'column';
+            card.style.alignItems = 'center';
+            card.style.textAlign = 'center';
+        });
     }
 }
 

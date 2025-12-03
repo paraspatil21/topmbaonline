@@ -818,7 +818,7 @@ main {
     width: 70px;
     height: 70px;
     margin: 0 auto 1.5rem;
-    background: linear-gradient(135deg, var(--primary), var(--secondary)); /* CHANGED from var(--primary), var(--secondary) to var(--primary), var(--secondary) */
+    background: #fabd05 !important; /* CHANGED: Added !important to ensure yellow color */
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -2286,42 +2286,47 @@ img.university-logo-img {
         line-height: 1.3 !important;
     }
     
-    /* 7. Why Choose Us - Horizontal cards */
-    .features-grid {
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 0.75rem !important;
-        overflow-x: auto !important;
-        padding-bottom: 1rem !important;
-        margin-bottom: 1rem !important;
-    }
-    
-    .features-grid::-webkit-scrollbar {
-        display: none !important;
-    }
-    
-    .feature-card {
-        min-width: 180px !important;
-        padding: 1rem !important;
-        margin: 0 !important;
-    }
-    
-    .feature-icon {
-        width: 50px !important;
-        height: 50px !important;
-        margin: 0 auto 0.75rem !important;
-        font-size: 1.2rem !important;
-        background: linear-gradient(135deg, var(--primary), var(--secondary)) !important; /* CHANGED from var(--primary), var(--secondary) to var(--primary), var(--secondary) */
-    }
-    
-    .feature-title {
-        font-size: 0.9rem !important;
-        margin-bottom: 0.5rem !important;
-    }
-    
-    .feature-description {
-        font-size: 0.75rem !important;
-        line-height: 1.3 !important;
-    }
+    /* 7. Why Choose Us - 2x2 grid (FIXED FROM HORIZONTAL) */
+.features-grid {
+    grid-template-columns: repeat(2, 1fr) !important; /* Changed from 4 to 2 */
+    gap: 1rem !important;
+    overflow-x: hidden !important; /* Changed from auto to hidden */
+    padding-bottom: 0 !important; /* Removed padding */
+    margin-bottom: 1rem !important;
+}
+
+.features-grid::-webkit-scrollbar {
+    display: none !important;
+}
+
+.feature-card {
+    min-width: auto !important; /* Removed fixed width */
+    padding: 1.5rem 1rem !important; /* Adjusted padding */
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+}
+
+.feature-icon {
+    width: 50px !important;
+    height: 50px !important;
+    margin: 0 auto 1rem !important;
+    font-size: 1.2rem !important;
+    background: #fabd05 !important; /* Ensured yellow background */
+}
+
+.feature-title {
+    font-size: 0.95rem !important;
+    margin-bottom: 0.5rem !important;
+    color: #002c5c !important;
+}
+
+.feature-description {
+    font-size: 0.75rem !important;
+    line-height: 1.4 !important;
+}
     
     /* 8. Explore MBA Trends - Fit in rectangle */
     #course-categories .grid.grid-cols-1.lg\\:grid-cols-2 {
