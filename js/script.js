@@ -48,7 +48,7 @@ function initializeData() {
             id: 3, 
             name: 'Jain University', 
             shortName: 'Jain',
-            logoPath: 'assets/img/Jain.png',
+            logoPath: 'assets/img/JAIN.png',
             fallbackText: 'JN',
             fallbackColor: 'bg-gradient-to-r from-purple-600 to-purple-700'
         },
@@ -56,7 +56,7 @@ function initializeData() {
             id: 4, 
             name: 'Amity University', 
             shortName: 'Amity',
-            logoPath: 'assets/img/Amity.png',
+            logoPath: 'assets/img/AMITY.png',
             fallbackText: 'AM',
             fallbackColor: 'bg-gradient-to-r from-red-600 to-red-700'
         },
@@ -64,7 +64,7 @@ function initializeData() {
             id: 5, 
             name: 'Manipal University', 
             shortName: 'Manipal',
-            logoPath: 'assets/img/Manipal.png',
+            logoPath: 'assets/img/MANIPAL.png',
             fallbackText: 'MA',
             fallbackColor: 'bg-gradient-to-r from-green-600 to-green-700'
         },
@@ -88,7 +88,7 @@ function initializeData() {
             id: 8, 
             name: 'Shoolini University', 
             shortName: 'Shoolini',
-            logoPath: 'assets/img/Shoolini.png',
+            logoPath: 'assets/img/SHOOLINI.png',
             fallbackText: 'SH',
             fallbackColor: 'bg-gradient-to-r from-pink-600 to-pink-700'
         },

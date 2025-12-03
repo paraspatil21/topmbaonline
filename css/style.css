@@ -1,17 +1,17 @@
 /* css/style.css - UPDATED WITH PROPER LOGO SIZES, NEW UNIVERSITY SECTION & MOBILE FIXES */
 :root {
     /* Blue color palette - 40-60% usage */
-    --primary: #0ea5e9; /* Sky Blue - Primary color */
-    --primary-dark: #0284c7; /* Darker Sky Blue */
-    --primary-light: #7dd3fc; /* Lighter Sky Blue */
-    --secondary: #1e40af; /* Dark Blue - Secondary color */
-    --secondary-dark: #1e3a8a; /* Darker Blue */
-    --secondary-light: #60a5fa; /* Lighter Blue */
+    --primary: #002c5c; /* Dark Blue - Primary color - CHANGED from #0ea5e9 to #002c5c */
+    --primary-dark: #001f42; /* Darker Dark Blue - CHANGED from #0284c7 */
+    --primary-light: #4a6fa5; /* Lighter Dark Blue - CHANGED from #7dd3fc */
+    --secondary: #002c5c; /* Dark Blue - Secondary color - CHANGED from #1e40af */
+    --secondary-dark: #001f42; /* Darker Blue - CHANGED from #1e3a8a */
+    --secondary-light: #4a6fa5; /* Lighter Blue - CHANGED from #60a5fa */
     
     /* Yellowish color palette - 30% usage */
-    --accent: #f59e0b; /* Yellow-Orange - Accent color */
-    --accent-dark: #d97706; /* Darker Yellow-Orange */
-    --accent-light: #fbbf24; /* Lighter Yellow */
+    --accent: #fabd05; /* Golden Yellow - Accent color - CHANGED from #f59e0b */
+    --accent-dark: #d9a404; /* Darker Golden Yellow - CHANGED from #d97706 */
+    --accent-light: #fcd34d; /* Lighter Golden Yellow - CHANGED from #fbbf24 */
     
     /* Neutral colors - 10% usage */
     --dark: #1f2937; /* Dark gray */
@@ -22,8 +22,8 @@
     --gray: #6b7280;
     --gray-light: #e5e7eb;
     --success: #10b981; /* Green */
-    --warning: #f59e0b; /* Same as accent */
-    --info: #3b82f6; /* Info blue */
+    --warning: #fabd05; /* Same as accent - CHANGED from #f59e0b */
+    --info: #002c5c; /* Info dark blue - CHANGED from #3b82f6 */
     
     /* Design tokens */
     --radius: 8px;
@@ -98,7 +98,7 @@ main {
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background: linear-gradient(to right, var(--primary), var(--secondary));
+    background: linear-gradient(to right, var(--primary), var(--accent)); /* CHANGED from var(--primary), var(--secondary) to var(--primary), var(--accent) */
     border-radius: 2px;
 }
 
@@ -106,7 +106,7 @@ main {
 #hero-section {
     height: 600px;
     position: relative;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); /* CHANGED from var(--primary) to var(--primary) and var(--secondary) to var(--secondary) */
     z-index: 1;
 }
 
@@ -130,15 +130,15 @@ main {
 }
 
 .hero-banner:nth-child(1) {
-    background: linear-gradient(rgba(14, 165, 233, 0.9), rgba(14, 165, 233, 0.7)), url('../assets/hero-bg1.jpg');
+    background: linear-gradient(rgba(0, 44, 92, 0.9), rgba(0, 44, 92, 0.7)), url('../assets/hero-bg1.jpg'); /* CHANGED from rgba(14, 165, 233, 0.9) to rgba(0, 44, 92, 0.9) */
 }
 
 .hero-banner:nth-child(2) {
-    background: linear-gradient(rgba(30, 64, 175, 0.9), rgba(30, 64, 175, 0.7)), url('../assets/hero-bg2.jpg');
+    background: linear-gradient(rgba(0, 44, 92, 0.9), rgba(0, 44, 92, 0.7)), url('../assets/hero-bg2.jpg'); /* CHANGED from rgba(30, 64, 175, 0.9) to rgba(0, 44, 92, 0.9) */
 }
 
 .hero-banner:nth-child(3) {
-    background: linear-gradient(rgba(245, 158, 11, 0.9), rgba(245, 158, 11, 0.7)), url('../assets/hero-bg3.jpg');
+    background: linear-gradient(rgba(250, 189, 5, 0.9), rgba(250, 189, 5, 0.7)), url('../assets/hero-bg3.jpg'); /* CHANGED from rgba(245, 158, 11, 0.9) to rgba(250, 189, 5, 0.9) */
 }
 
 .banner-content {
@@ -191,7 +191,7 @@ main {
 
 .search-btn {
     background: var(--white);
-    color: var(--primary);
+    color: var(--primary); /* CHANGED from var(--primary) to var(--primary) */
     border: none;
     padding: 1rem 2rem;
     border-radius: var(--radius);
@@ -206,13 +206,13 @@ main {
 .search-btn:hover {
     background: var(--light);
     transform: translateY(-2px);
-    color: var(--secondary);
+    color: var(--secondary); /* CHANGED from var(--secondary) to var(--secondary) */
 }
 
 .cta-btn {
     display: inline-block;
     background: var(--white);
-    color: var(--primary);
+    color: var(--primary); /* CHANGED from var(--primary) to var(--primary) */
     padding: 1rem 2.5rem;
     border-radius: var(--radius);
     font-weight: 600;
@@ -224,7 +224,7 @@ main {
 .cta-btn:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
-    background: var(--accent);
+    background: var(--accent); /* CHANGED from var(--accent) to var(--accent) */
     color: var(--white);
 }
 
@@ -453,8 +453,8 @@ main {
 
 .university-card-new:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(14, 165, 233, 0.15);
-    border-color: var(--primary);
+    box-shadow: 0 12px 30px rgba(0, 44, 92, 0.15); /* CHANGED from rgba(14, 165, 233, 0.15) to rgba(0, 44, 92, 0.15) */
+    border-color: var(--primary); /* CHANGED from var(--primary) to var(--primary) */
 }
 
 .university-card-content {
@@ -483,7 +483,7 @@ main {
 }
 
 .university-card-new:hover .university-logo-container {
-    border-color: var(--primary);
+    border-color: var(--primary); /* CHANGED from var(--primary) to var(--primary) */
     transform: scale(1.05);
 }
 
@@ -549,14 +549,14 @@ main {
 .stat-card-new:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
-    border-color: var(--primary);
+    border-color: var(--primary); /* CHANGED from var(--primary) to var(--primary) */
 }
 
 .stat-icon-new {
     width: 60px;
     height: 60px;
     margin: 0 auto 1rem;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    background: linear-gradient(135deg, var(--primary), var(--secondary)); /* CHANGED from var(--primary), var(--secondary) to var(--primary), var(--secondary) */
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -568,7 +568,7 @@ main {
 .stat-number-new {
     font-size: 2.5rem;
     font-weight: 800;
-    color: var(--primary);
+    color: var(--primary); /* CHANGED from var(--primary) to var(--primary) */
     margin-bottom: 0.5rem;
 }
 
@@ -603,7 +603,7 @@ main {
 .university-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
-    border-color: var(--primary);
+    border-color: var(--primary); /* CHANGED from var(--primary) to var(--primary) */
 }
 
 .university-logo {
@@ -622,7 +622,7 @@ main {
 }
 
 .university-logo:hover {
-    border-color: var(--primary);
+    border-color: var(--primary); /* CHANGED from var(--primary) to var(--primary) */
     transform: scale(1.05);
 }
 
@@ -681,7 +681,7 @@ main {
 .stat-number {
     font-size: 3rem;
     font-weight: 800;
-    color: var(--primary);
+    color: var(--primary); /* CHANGED from var(--primary) to var(--primary) */
     margin-bottom: 0.5rem;
 }
 
@@ -717,7 +717,7 @@ main {
 
 .degree-header {
     padding: 1.5rem;
-    background: linear-gradient(to right, var(--primary), var(--secondary));
+    background: linear-gradient(to right, var(--primary), var(--secondary)); /* CHANGED from var(--primary), var(--secondary) to var(--primary), var(--secondary) */
     color: var(--white);
 }
 
@@ -742,7 +742,7 @@ main {
 .compare-btn {
     width: 100%;
     padding: 0.75rem;
-    background: var(--primary);
+    background: var(--primary); /* CHANGED from var(--primary) to var(--primary) */
     color: var(--white);
     border: none;
     border-radius: var(--radius);
@@ -756,7 +756,7 @@ main {
 }
 
 .compare-btn:hover {
-    background: var(--primary-dark);
+    background: var(--primary-dark); /* CHANGED from var(--primary-dark) to var(--primary-dark) */
 }
 
 /* Matrix */
@@ -782,7 +782,7 @@ main {
 }
 
 .matrix-table th {
-    background: var(--primary);
+    background: var(--primary); /* CHANGED from var(--primary) to var(--primary) */
     color: var(--white);
     font-weight: 600;
 }
@@ -811,14 +811,14 @@ main {
 .feature-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
-    border-color: var(--primary);
+    border-color: var(--primary); /* CHANGED from var(--primary) to var(--primary) */
 }
 
 .feature-icon {
     width: 70px;
     height: 70px;
     margin: 0 auto 1.5rem;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    background: linear-gradient(135deg, var(--primary), var(--secondary)); /* CHANGED from var(--primary), var(--secondary) to var(--primary), var(--secondary) */
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -858,7 +858,7 @@ main {
 .certification-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
-    border-color: var(--primary);
+    border-color: var(--primary); /* CHANGED from var(--primary) to var(--primary) */
 }
 
 .certification-header {
@@ -877,14 +877,14 @@ main {
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    color: var(--primary);
+    color: var(--primary); /* CHANGED from var(--primary) to var(--primary) */
 }
 
 .certification-rating {
     display: flex;
     align-items: center;
     gap: 0.25rem;
-    color: var(--accent);
+    color: var(--accent); /* CHANGED from var(--accent) to var(--accent) */
 }
 
 /* Categories Grid */
@@ -907,7 +907,7 @@ main {
 .category-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
-    background: linear-gradient(to right, var(--primary), var(--secondary));
+    background: linear-gradient(to right, var(--primary), var(--secondary)); /* CHANGED from var(--primary), var(--secondary) to var(--primary), var(--secondary) */
     color: var(--white);
 }
 
@@ -979,7 +979,7 @@ main {
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    color: var(--primary);
+    color: var(--primary); /* CHANGED from var(--primary) to var(--primary) */
 }
 
 .author-info h4 {
@@ -1001,7 +1001,7 @@ main {
 }
 
 .testimonial-nav {
-    background: var(--primary);
+    background: var(--primary); /* CHANGED from var(--primary) to var(--primary) */
     color: var(--white);
     border: none;
     width: 40px;
@@ -1015,7 +1015,7 @@ main {
 }
 
 .testimonial-nav:hover {
-    background: var(--primary-dark);
+    background: var(--primary-dark); /* CHANGED from var(--primary-dark) to var(--primary-dark) */
 }
 
 .testimonial-dots {
@@ -1033,7 +1033,7 @@ main {
 }
 
 .testimonial-dot.active {
-    background: var(--primary);
+    background: var(--primary); /* CHANGED from var(--primary) to var(--primary) */
 }
 
 /* Placement Section */
@@ -1058,12 +1058,16 @@ main {
     font-weight: 600;
 }
 
+.placement-feature i {
+    color: var(--primary); /* CHANGED from text-blue-600 to var(--primary) */
+}
+
 .illustration {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 300px;
-    background: linear-gradient(135deg, var(--primary-light), var(--secondary-light));
+    background: linear-gradient(135deg, var(--primary-light), var(--secondary-light)); /* CHANGED from var(--primary-light), var(--secondary-light) to var(--primary-light), var(--secondary-light) */
     border-radius: var(--radius);
 }
 
@@ -1089,7 +1093,7 @@ main {
 
 .blog-image {
     height: 200px;
-    background: linear-gradient(to right, var(--primary), var(--secondary));
+    background: linear-gradient(to right, var(--primary), var(--secondary)); /* CHANGED from var(--primary), var(--secondary) to var(--primary), var(--secondary) */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1134,7 +1138,7 @@ main {
 
 .newsletter-btn {
     background: var(--white);
-    color: var(--primary);
+    color: var(--primary); /* CHANGED from var(--primary) to var(--primary) */
     border: none;
     padding: 1rem 2rem;
     border-radius: var(--radius);
@@ -1144,7 +1148,7 @@ main {
 }
 
 .newsletter-btn:hover {
-    background: var(--accent);
+    background: var(--accent); /* CHANGED from var(--accent) to var(--accent) */
     color: var(--white);
     transform: translateY(-2px);
 }
@@ -1171,8 +1175,8 @@ main {
 
 .mba-square-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(14, 165, 233, 0.15);
-    border-color: var(--primary);
+    box-shadow: 0 12px 30px rgba(0, 44, 92, 0.15); /* CHANGED from rgba(14, 165, 233, 0.15) to rgba(0, 44, 92, 0.15) */
+    border-color: var(--primary); /* CHANGED from var(--primary) to var(--primary) */
 }
 
 .mba-card-header {
@@ -1190,7 +1194,7 @@ main {
 }
 
 .mba-card-provider {
-    color: var(--primary);
+    color: var(--primary); /* CHANGED from var(--primary) to var(--primary) */
     font-weight: 600;
     font-size: 0.95rem;
     display: flex;
@@ -1224,12 +1228,12 @@ main {
 }
 
 .mba-badge.level {
-    background-color: #dbeafe;
-    color: #1e40af;
+    background-color: #dbeafe; /* Keeping as light blue for contrast */
+    color: #002c5c; /* CHANGED from #1e40af to #002c5c */
 }
 
 .mba-badge.duration {
-    background-color: #fef3c7;
+    background-color: #fef3c7; /* Keeping as light yellow for contrast */
     color: #92400e;
 }
 
@@ -1265,7 +1269,7 @@ main {
 .mba-compare-btn {
     width: 100%;
     padding: 12px;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark)); /* CHANGED from var(--primary), var(--primary-dark) to var(--primary), var(--primary-dark) */
     color: white;
     border: none;
     border-radius: 10px;
@@ -1280,9 +1284,9 @@ main {
 }
 
 .mba-compare-btn:hover {
-    background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+    background: linear-gradient(135deg, var(--primary-dark), var(--secondary)); /* CHANGED from var(--primary-dark), var(--secondary) to var(--primary-dark), var(--secondary) */
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(14, 165, 233, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 44, 92, 0.3); /* CHANGED from rgba(14, 165, 233, 0.3) to rgba(0, 44, 92, 0.3) */
 }
 
 .mba-compare-btn.compared {
@@ -1312,10 +1316,10 @@ main {
 
 .filter-btn.active,
 .filter-btn:hover {
-    background: var(--primary);
+    background: var(--primary); /* CHANGED from var(--primary) to var(--primary) */
     color: white;
-    border-color: var(--primary);
-    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
+    border-color: var(--primary); /* CHANGED from var(--primary) to var(--primary) */
+    box-shadow: 0 4px 12px rgba(0, 44, 92, 0.2); /* CHANGED from rgba(14, 165, 233, 0.2) to rgba(0, 44, 92, 0.2) */
 }
 
 /* University logo colors for small inline logos */
@@ -1332,12 +1336,12 @@ main {
 }
 
 .university-logo-small.nmims {
-    background-color: #1e40af;
+    background-color: #002c5c; /* CHANGED from #1e40af to #002c5c */
     color: white;
 }
 
 .university-logo-small.vit {
-    background-color: #f59e0b;
+    background-color: #fabd05; /* CHANGED from #f59e0b to #fabd05 */
     color: white;
 }
 
@@ -1379,15 +1383,15 @@ main {
 
 /* Gradient backgrounds */
 .gradient-bg-blue {
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    background: linear-gradient(135deg, var(--primary), var(--secondary)); /* CHANGED from var(--primary), var(--secondary) to var(--primary), var(--secondary) */
 }
 
 .gradient-bg-yellow {
-    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark)); /* CHANGED from var(--accent), var(--accent-dark) to var(--accent), var(--accent-dark) */
 }
 
 .gradient-bg-blue-yellow {
-    background: linear-gradient(135deg, var(--primary), var(--accent));
+    background: linear-gradient(135deg, var(--primary), var(--accent)); /* CHANGED from var(--primary), var(--accent) to var(--primary), var(--accent) */
 }
 
 /* Glass morphism effect */
@@ -1474,14 +1478,14 @@ main {
 
 /* Utility Classes */
 .text-gradient {
-    background: linear-gradient(to right, var(--primary), var(--secondary));
+    background: linear-gradient(to right, var(--primary), var(--secondary)); /* CHANGED from var(--primary), var(--secondary) to var(--primary), var(--secondary) */
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
 .bg-gradient {
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    background: linear-gradient(135deg, var(--primary), var(--secondary)); /* CHANGED from var(--primary), var(--secondary) to var(--primary), var(--secondary) */
 }
 
 .shadow-hover {
@@ -1494,20 +1498,20 @@ main {
 
 /* Yellow accent backgrounds */
 .yellow-bg {
-    background-color: var(--accent-light);
+    background-color: var(--accent-light); /* CHANGED from var(--accent-light) to var(--accent-light) */
 }
 
 .yellow-text {
-    color: var(--accent);
+    color: var(--accent); /* CHANGED from var(--accent) to var(--accent) */
 }
 
 /* Blue backgrounds */
 .blue-bg {
-    background-color: var(--primary-light);
+    background-color: var(--primary-light); /* CHANGED from var(--primary-light) to var(--primary-light) */
 }
 
 .dark-blue-bg {
-    background-color: var(--secondary);
+    background-color: var(--secondary); /* CHANGED from var(--secondary) to var(--secondary) */
     color: var(--white);
 }
 
@@ -1538,7 +1542,7 @@ main {
 .feature-icon-right {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    background: linear-gradient(135deg, var(--primary), var(--secondary)); /* CHANGED from var(--primary), var(--secondary) to var(--primary), var(--secondary) */
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -1565,7 +1569,7 @@ main {
 .mba-brochure-btn {
     width: 100%;
     padding: 12px;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark)); /* CHANGED from var(--primary), var(--primary-dark) to var(--primary), var(--primary-dark) */
     color: white;
     border: none;
     border-radius: 10px;
@@ -1580,9 +1584,9 @@ main {
 }
 
 .mba-brochure-btn:hover {
-    background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+    background: linear-gradient(135deg, var(--primary-dark), var(--secondary)); /* CHANGED from var(--primary-dark), var(--secondary) to var(--primary-dark), var(--secondary) */
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(14, 165, 233, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 44, 92, 0.3); /* CHANGED from rgba(14, 165, 233, 0.3) to rgba(0, 44, 92, 0.3) */
 }
 
 /* Modal Styles */
@@ -1646,7 +1650,7 @@ img.university-logo-img {
     left: 0;
     right: 0;
     height: 100%;
-    background: linear-gradient(to right, var(--primary-light), var(--secondary-light));
+    background: linear-gradient(to right, var(--primary-light), var(--secondary-light)); /* CHANGED from var(--primary-light), var(--secondary-light) to var(--primary-light), var(--secondary-light) */
     opacity: 0.1;
     z-index: -1;
 }
@@ -1671,7 +1675,7 @@ img.university-logo-img {
 }
 
 .notification.info {
-    background-color: #3b82f6;
+    background-color: #002c5c; /* CHANGED from #3b82f6 to #002c5c */
 }
 
 /* Responsive Design */
@@ -2169,7 +2173,7 @@ img.university-logo-img {
     .degree-header {
         padding: 1rem !important;
         min-height: 60px !important; /* Increased header height */
-        background: linear-gradient(to right, var(--primary), var(--secondary)) !important;
+        background: linear-gradient(to right, var(--primary), var(--secondary)) !important; /* CHANGED from var(--primary), var(--secondary) to var(--primary), var(--secondary) */
     }
     
     .degree-header .flex.items-center.gap-3 {
@@ -2221,7 +2225,7 @@ img.university-logo-img {
         font-size: 0.75rem !important; /* Slightly larger font */
         min-height: 36px !important; /* Taller button */
         width: 100% !important;
-        background: linear-gradient(135deg, var(--primary), var(--primary-dark)) !important;
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark)) !important; /* CHANGED from var(--primary), var(--primary-dark) to var(--primary), var(--primary-dark) */
         color: white !important;
         border-radius: 6px !important;
         font-weight: 600 !important;
@@ -2244,6 +2248,7 @@ img.university-logo-img {
     
     #why-us-split .bg-gradient-to-br.from-blue-600.to-blue-800 {
         padding: 1.5rem !important;
+        background: linear-gradient(to bottom right, #002c5c, #001f42) !important; /* CHANGED from from-blue-600.to-blue-800 to #002c5c, #001f42 */
     }
     
     #why-us-split .text-3xl.lg\\:text-4xl {
@@ -2268,6 +2273,7 @@ img.university-logo-img {
         width: 40px !important;
         height: 40px !important;
         font-size: 1rem !important;
+        background: linear-gradient(135deg, var(--primary), var(--secondary)) !important; /* CHANGED from var(--primary), var(--secondary) to var(--primary), var(--secondary) */
     }
     
     .feature-title-right {
@@ -2304,6 +2310,7 @@ img.university-logo-img {
         height: 50px !important;
         margin: 0 auto 0.75rem !important;
         font-size: 1.2rem !important;
+        background: linear-gradient(135deg, var(--primary), var(--secondary)) !important; /* CHANGED from var(--primary), var(--secondary) to var(--primary), var(--secondary) */
     }
     
     .feature-title {
@@ -2387,7 +2394,7 @@ img.university-logo-img {
         display: flex !important;
         align-items: center !important;
         gap: 0.25rem !important;
-        color: var(--primary) !important;
+        color: var(--primary) !important; /* CHANGED from var(--primary) to var(--primary) */
     }
     
     .university-logo-small {
@@ -2465,7 +2472,7 @@ img.university-logo-img {
         font-size: 0.75rem !important; /* Slightly larger font */
         min-height: 40px !important;
         width: 100% !important;
-        background: linear-gradient(135deg, var(--primary), var(--primary-dark)) !important;
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark)) !important; /* CHANGED from var(--primary), var(--primary-dark) to var(--primary), var(--primary-dark) */
         color: white !important;
         border-radius: 8px !important;
         font-weight: 600 !important;
@@ -2528,6 +2535,7 @@ img.university-logo-img {
     
     .placement-feature i {
         margin-bottom: 0.5rem !important;
+        color: var(--primary) !important; /* CHANGED from text-blue-600 to var(--primary) */
     }
     
     .cta-btn {
@@ -2554,6 +2562,7 @@ img.university-logo-img {
     
     .blog-image {
         height: 120px !important;
+        background: linear-gradient(to right, var(--primary), var(--secondary)) !important; /* CHANGED from var(--primary), var(--secondary) to var(--primary), var(--secondary) */
     }
     
     .blog-content {
@@ -2626,6 +2635,7 @@ img.university-logo-img {
     
     .feature-icon-right {
         margin: 0 auto;
+        background: linear-gradient(135deg, var(--primary), var(--secondary)) !important; /* CHANGED from var(--primary), var(--secondary) to var(--primary), var(--secondary) */
     }
     
     /* Responsive adjustments for university logos */
