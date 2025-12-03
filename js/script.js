@@ -1,4 +1,4 @@
-// js/script.js - UPDATED WITH NEW UNIVERSITY SECTION
+// js/script.js - UPDATED WITH NEW UNIVERSITY SECTION, MOBILE CHART & TOUCH INTERACTIONS
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM loaded, initializing...');
     
@@ -323,6 +323,9 @@ function renderAllComponents() {
     renderMBACourses();
     renderTestimonials();
     renderBlogs();
+    
+    // Optimize cards for mobile after rendering
+    setTimeout(optimizeCardTextForMobile, 100);
 }
 
 // NEW: University rendering function for the redesigned section
@@ -376,9 +379,9 @@ function renderUniversitiesNew() {
         logoContainer.appendChild(img);
         logoContainer.appendChild(fallbackDiv);
         
-        // Create university name
+        // Create university name with truncation class
         const nameDiv = document.createElement('div');
-        nameDiv.className = 'university-name';
+        nameDiv.className = 'university-name truncate-2-lines';
         nameDiv.textContent = university.name;
         
         // Create card content
@@ -549,7 +552,7 @@ function renderFilteredMBACourses(courses) {
         
         courseCard.innerHTML = `
             <div class="mba-card-header">
-                <h3 class="mba-card-title">${course.courseName}</h3>
+                <h3 class="mba-card-title truncate-2-lines">${course.courseName}</h3>
                 <div class="mba-card-provider">
                     <span class="university-logo-small">${logoText}</span>
                     ${course.university}
@@ -772,6 +775,52 @@ function initializeCharts() {
             }
         });
     }
+    
+    // Mobile-specific chart
+    const mobileCategoriesCtx = document.getElementById('mobileCourseCategoriesChart');
+    if (mobileCategoriesCtx) {
+        const mobileCategoriesData = {
+            labels: ['Business Analytics', 'Digital Marketing', 'Finance', 'Operations', 'Data Science', 'HR', 'Hospital', 'Others'],
+            datasets: [{
+                data: [20, 18, 15, 12, 10, 8, 7, 10],
+                backgroundColor: [
+                    '#0ea5e9',
+                    '#f59e0b',
+                    '#ef4444',
+                    '#10b981',
+                    '#8b5cf6',
+                    '#06b6d4',
+                    '#ec4899',
+                    '#94a3b8'
+                ],
+                borderWidth: 2,
+                borderColor: '#ffffff'
+            }]
+        };
+        
+        new Chart(mobileCategoriesCtx, {
+            type: 'doughnut',
+            data: mobileCategoriesData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '65%',
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                        titleColor: '#ffffff',
+                        bodyColor: '#ffffff',
+                        borderColor: '#0ea5e9',
+                        borderWidth: 1,
+                        cornerRadius: 6
+                    }
+                }
+            }
+        });
+    }
 }
 
 // Initialize search functionality
@@ -807,6 +856,143 @@ function performSearch() {
     }, 1000);
 }
 
+// CARD TEXT OVERLAY SOLUTION FOR MOBILE
+function optimizeCardTextForMobile() {
+    // Only apply on mobile devices
+    if (window.innerWidth > 768) return;
+    
+    console.log('Optimizing card text for mobile...');
+    
+    // Function to create touch overlay
+    function createTouchOverlay(card, fullText, title = '') {
+        // Remove existing overlay if any
+        const existingOverlay = card.querySelector('.card-touch-overlay');
+        if (existingOverlay) {
+            existingOverlay.remove();
+        }
+        
+        // Create overlay element
+        const overlay = document.createElement('div');
+        overlay.className = 'card-touch-overlay';
+        overlay.innerHTML = `
+            ${title ? `<h4 class="font-bold mb-2">${title}</h4>` : ''}
+            <div class="text-sm">${fullText}</div>
+            <button class="close-overlay">
+                <i class="fas fa-times"></i>
+            </button>
+        `;
+        
+        card.style.position = 'relative';
+        card.appendChild(overlay);
+        
+        // Add touch event to show overlay
+        card.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            overlay.classList.add('active');
+        }, { passive: false });
+        
+        // Close overlay button
+        const closeBtn = overlay.querySelector('.close-overlay');
+        closeBtn.addEventListener('touchstart', function(e) {
+            e.stopPropagation();
+            overlay.classList.remove('active');
+        });
+        
+        // Close overlay when tapping outside
+        overlay.addEventListener('touchstart', function(e) {
+            if (e.target === overlay) {
+                overlay.classList.remove('active');
+            }
+        });
+    }
+    
+    // Process University Cards
+    document.querySelectorAll('.university-card-new').forEach(card => {
+        const nameElement = card.querySelector('.university-name');
+        if (nameElement) {
+            const fullText = nameElement.textContent;
+            // Check if text is likely truncated
+            if (fullText.length > 30) {
+                createTouchOverlay(card, fullText, 'University Name');
+            }
+        }
+    });
+    
+    // Process MBA Specialization Cards
+    document.querySelectorAll('.degree-card').forEach(card => {
+        const titleElement = card.querySelector('.degree-header h3');
+        const descElement = card.querySelector('.degree-body p');
+        
+        if (titleElement && descElement) {
+            const titleText = titleElement.textContent;
+            const descText = descElement.textContent;
+            
+            // Check if either is truncated
+            if (titleText.length > 40 || descText.length > 100) {
+                const fullText = `<strong>${titleText}</strong><br><br>${descText}`;
+                createTouchOverlay(card, fullText, 'Program Details');
+            }
+        }
+    });
+    
+    // Process MBA Course Cards
+    document.querySelectorAll('.mba-square-card').forEach(card => {
+        const titleElement = card.querySelector('.mba-card-title');
+        const providerElement = card.querySelector('.mba-card-provider');
+        const eligibilityElement = card.querySelector('.eligibility-content');
+        
+        if (titleElement && eligibilityElement) {
+            const titleText = titleElement.textContent;
+            const providerText = providerElement ? providerElement.textContent : '';
+            const eligibilityText = eligibilityElement.innerHTML;
+            
+            // Always add overlay for course cards as they have lots of info
+            const fullText = `
+                <strong>${titleText}</strong><br>
+                ${providerText ? `<em>${providerText}</em><br><br>` : ''}
+                <strong>Eligibility:</strong><br>
+                ${eligibilityText}
+            `;
+            
+            createTouchOverlay(card, fullText, 'Course Details');
+        }
+    });
+    
+    // Process Feature Cards
+    document.querySelectorAll('.feature-card').forEach(card => {
+        const titleElement = card.querySelector('.feature-title');
+        const descElement = card.querySelector('.feature-description');
+        
+        if (titleElement && descElement) {
+            const titleText = titleElement.textContent;
+            const descText = descElement.textContent;
+            
+            if (titleText.length > 30 || descText.length > 80) {
+                const fullText = `<strong>${titleText}</strong><br><br>${descText}`;
+                createTouchOverlay(card, fullText, 'Feature Details');
+            }
+        }
+    });
+    
+    // Process Blog Cards
+    document.querySelectorAll('.blog-card').forEach(card => {
+        const titleElement = card.querySelector('.blog-content h3');
+        const descElement = card.querySelector('.blog-content p');
+        
+        if (titleElement && descElement) {
+            const titleText = titleElement.textContent;
+            const descText = descElement.textContent;
+            
+            if (titleText.length > 40 || descText.length > 60) {
+                const fullText = `<strong>${titleText}</strong><br><br>${descText}`;
+                createTouchOverlay(card, fullText, 'Blog Details');
+            }
+        }
+    });
+    
+    console.log('Card optimization complete');
+}
+
 // Optimize for mobile
 function optimizeForMobile() {
     document.body.style.overflowX = 'hidden';
@@ -818,14 +1004,18 @@ function optimizeForMobile() {
     });
     
     if (window.innerWidth < 768) {
+        // Reduce text sizes further
         document.querySelectorAll('.text-4xl, .text-5xl').forEach(el => {
-            if (el.classList.contains('text-4xl')) el.classList.replace('text-4xl', 'text-3xl');
-            if (el.classList.contains('text-5xl')) el.classList.replace('text-5xl', 'text-3xl');
+            if (el.classList.contains('text-4xl')) el.classList.replace('text-4xl', 'text-2xl');
+            if (el.classList.contains('text-5xl')) el.classList.replace('text-5xl', 'text-2xl');
         });
+        
+        // Call card optimization
+        setTimeout(optimizeCardTextForMobile, 500);
     }
 }
 
-// Render MBA Specializations
+// Render MBA Specializations with truncation
 function renderMBASpecializations() {
     const specializationsGrid = document.getElementById('mba-specializations');
     if (!specializationsGrid || !window.appData.mbaSpecializations) return;
@@ -839,11 +1029,11 @@ function renderMBASpecializations() {
             <div class="degree-header">
                 <div class="flex items-center gap-3">
                     <i class="fas ${specialization.icon} text-2xl"></i>
-                    <h3 class="text-xl font-bold">${specialization.title}</h3>
+                    <h3 class="text-xl font-bold truncate-2-lines">${specialization.title}</h3>
                 </div>
             </div>
             <div class="degree-body">
-                <p class="text-gray-600 mb-4">${specialization.description}</p>
+                <p class="text-gray-600 mb-4 truncate-3-lines">${specialization.description}</p>
                 <button class="compare-btn" data-specialization-id="${specialization.id}">
                     <i class="fas fa-search"></i> Explore Programs
                 </button>
@@ -870,7 +1060,7 @@ function renderMBACourses() {
         
         courseCard.innerHTML = `
             <div class="mba-card-header">
-                <h3 class="mba-card-title">${course.courseName}</h3>
+                <h3 class="mba-card-title truncate-2-lines">${course.courseName}</h3>
                 <div class="mba-card-provider">
                     <span class="university-logo-small">${logoText}</span>
                     ${course.university}
@@ -919,7 +1109,7 @@ function renderTestimonials() {
     // Handled by initializeTestimonialSlider
 }
 
-// Render Blogs
+// Render Blogs with truncation
 function renderBlogs() {
     const blogsGrid = document.querySelector('.blogs-grid');
     if (!blogsGrid || !window.appData.blogs) return;
@@ -938,8 +1128,8 @@ function renderBlogs() {
                     <span>${blog.date}</span>
                     <span>${blog.readTime}</span>
                 </div>
-                <h3 class="text-xl font-bold mb-2">${blog.title}</h3>
-                <p class="text-gray-600">${blog.description}</p>
+                <h3 class="text-xl font-bold mb-2 truncate-2-lines">${blog.title}</h3>
+                <p class="text-gray-600 truncate-2-lines">${blog.description}</p>
                 <a href="#" class="inline-block mt-4 text-blue-600 font-medium hover:text-blue-800">
                     Read More <i class="fas fa-arrow-right ml-1"></i>
                 </a>
