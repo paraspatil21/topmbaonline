@@ -162,90 +162,117 @@ function initializeData() {
         }
     ];
 
-    // Updated MBA Courses Data
-    const mbaCourses = [
-        {
-            id: 1,
-            university: 'NMIMS University',
-            courseName: 'MBA (WX) - Leadership & Strategy',
-            duration: '2 years',
-            fees: '₹4,00,000',
-            category: 'Executive MBA',
-            eligibility: 'Bachelor\'s Degree (10+2+3) in any discipline from recognized University or an equivalent degree recognised by Association of Indian Universities (AIU) with a minimum of 55% (50% for SC/ST/OBC/PwD) and 3 + years of Work Experience'
-        },
-        {
-            id: 2,
-            university: 'NMIMS University',
-            courseName: 'MBA (WX) - Operations & Supply Chain Management',
-            duration: '2 years',
-            fees: '₹4,00,000',
-            category: 'Executive MBA',
-            eligibility: 'Bachelor\'s Degree (10+2+3) in any discipline from recognized University or an equivalent degree recognised by Association of Indian Universities (AIU) with a minimum of 55% (50% for SC/ST/OBC/PwD) and 3 + years of Work Experience'
-        },
-        {
-            id: 3,
-            university: 'Manipal University',
-            courseName: 'Analytics & Data Science',
-            duration: '2 years',
-            fees: '₹1,75,000',
-            category: 'Online MBA',
-            eligibility: ''
-        },
-        {
-            id: 4,
-            university: 'Manipal University',
-            courseName: 'Information System Management',
-            duration: '2 years',
-            fees: '₹1,75,000',
-            category: 'Online MBA',
-            eligibility: 'Candidates must have a 10 + 2 + 3-year bachelor\'s degree from a recognized university/institution or an equivalent qualification as recognized by the Association of Indian Universities.'
-        },
-        {
-            id: 5,
-            university: 'VIT University',
-            courseName: 'General Management',
-            duration: '2 years',
-            fees: '₹1,85,000',
-            category: 'Online MBA',
-            eligibility: 'Completed a Bachelor\'s degree of at least three years duration with a minimum of 50% marks (45% for candidates in reserved categories).'
-        },
-        {
-            id: 6,
-            university: 'VIT University',
-            courseName: 'Operation and Supply Chain Management',
-            duration: '2 years',
-            fees: '₹1,85,000',
-            category: 'Online MBA',
-            eligibility: 'Completed a Bachelor\'s degree of at least three years duration with a minimum of 50% marks (45% for candidates in reserved categories).'
-        },
-        {
-            id: 7,
-            university: 'Amity University',
-            courseName: 'MBA in Dual Specialization',
-            duration: '2 years',
-            fees: '₹1,99,000',
-            category: 'Online MBA',
-            eligibility: '1. Fresh graduates and working professionals.<br>2. Entrepreneurs looking to develop skills to manage critical business projects.'
-        },
-        {
-            id: 8,
-            university: 'Amity University',
-            courseName: 'MBA in International Finance',
-            duration: '2 years',
-            fees: '₹1,99,000',
-            category: 'Online MBA',
-            eligibility: '1. Fresh graduates and working professionals.<br>2. Entrepreneurs looking to develop skills to manage critical business projects.'
-        },
-        {
-            id: 9,
-            university: 'Jain University',
-            courseName: 'MBA in AI for Business Strategy',
-            duration: '2 years',
-            fees: '₹2,50,000',
-            category: 'Online MBA',
-            eligibility: '1. Pass in an Undergraduate (Bachelor) Program of a minimum duration of three (3) years in any stream from a UGC Recognized University<br>2. A minimum aggregate of 50% or an equivalent letter/ numerical grade.<br>3. A relaxation of 5% shall be given to SC/ST candidates.<br>Candidates who are in the final semester of the Bachelors Program are also eligible to apply.'
-        }
-    ];
+  // Updated MBA Courses Data
+const mbaCourses = [
+    {
+        id: 1,
+        university: 'NMIMS University',
+        courseName: 'MBA (WX) - Leadership & Strategy',
+        duration: '2 years',
+        fees: '₹4,00,000',
+        category: 'Executive MBA',
+        eligibility: 'Bachelor\'s Degree (10+2+3) in any discipline from recognized University or an equivalent degree recognised by Association of Indian Universities (AIU) with a minimum of 55% (50% for SC/ST/OBC/PwD) and 3 + years of Work Experience'
+    },
+    {
+        id: 2,
+        university: 'NMIMS University',
+        courseName: 'MBA (WX) - Operations & Supply Chain Management',
+        duration: '2 years',
+        fees: '₹4,00,000',
+        category: 'Executive MBA',
+        eligibility: 'Bachelor\'s Degree (10+2+3) in any discipline from recognized University or an equivalent degree recognised by Association of Indian Universities (AIU) with a minimum of 55% (50% for SC/ST/OBC/PwD) and 3 + years of Work Experience'
+    },
+    {
+        id: 3,
+        university: 'Manipal University',
+        courseName: 'Analytics & Data Science',
+        duration: '2 years',
+        fees: '₹1,75,000',
+        category: 'Online MBA',
+        eligibility: 'Candidates must have a 10 + 2 + 3-year bachelor\'s degree from a recognized university/institution or an equivalent qualification as recognized by the Association of Indian Universities.'
+    },
+    {
+        id: 4,
+        university: 'Manipal University',
+        courseName: 'Information System Management',
+        duration: '2 years',
+        fees: '₹1,75,000',
+        category: 'Online MBA',
+        eligibility: 'Candidates must have a 10 + 2 + 3-year bachelor\'s degree from a recognized university/institution or an equivalent qualification as recognized by the Association of Indian Universities.'
+    },
+    {
+        id: 5,
+        university: 'VIT University',
+        courseName: 'General Management',
+        duration: '2 years',
+        fees: '₹1,85,000',
+        category: 'Online MBA',
+        eligibility: 'Completed a Bachelor\'s degree of at least three years duration with a minimum of 50% marks (45% for candidates in reserved categories).'
+    },
+    {
+        id: 6,
+        university: 'VIT University',
+        courseName: 'Operation and Supply Chain Management',
+        duration: '2 years',
+        fees: '₹1,85,000',
+        category: 'Online MBA',
+        eligibility: 'Completed a Bachelor\'s degree of at least three years duration with a minimum of 50% marks (45% for candidates in reserved categories).'
+    },
+    {
+        id: 7,
+        university: 'Amity University',
+        courseName: 'MBA in Dual Specialization',
+        duration: '2 years',
+        fees: '₹1,99,000',
+        category: 'Online MBA',
+        eligibility: '1. Fresh graduates and working professionals.<br>2. Entrepreneurs looking to develop skills to manage critical business projects.'
+    },
+    {
+        id: 8,
+        university: 'Amity University',
+        courseName: 'MBA in International Finance',
+        duration: '2 years',
+        fees: '₹1,99,000',
+        category: 'Online MBA',
+        eligibility: '1. Fresh graduates and working professionals.<br>2. Entrepreneurs looking to develop skills to manage critical business projects.'
+    },
+    {
+        id: 9,
+        university: 'Jain University',
+        courseName: 'MBA in AI for Business Strategy',
+        duration: '2 years',
+        fees: '₹2,50,000',
+        category: 'Online MBA',
+        eligibility: '1. Pass in an Undergraduate (Bachelor) Program of a minimum duration of three (3) years in any stream from a UGC Recognized University<br>2. A minimum aggregate of 50% or an equivalent letter/ numerical grade.<br>3. A relaxation of 5% shall be given to SC/ST candidates.<br>Candidates who are in the final semester of the Bachelors Program are also eligible to apply.'
+    },
+    {
+        id: 10,
+        university: 'Jain University',
+        courseName: 'MBA in Artificial Intelligence',
+        duration: '2 years',
+        fees: '₹2,40,000',
+        category: 'Online MBA',
+        eligibility: '1. Pass in an Undergraduate (Bachelor) Program of a minimum duration of three (3) years in any stream from a UGC Recognized University<br>2. A minimum aggregate of 50% or an equivalent letter/ numerical grade.<br>3. A relaxation of 5% shall be given to SC/ST candidates.<br>Candidates who are in the final semester of the Bachelors Program are also eligible to apply.'
+    },
+    {
+        id: 11,
+        university: 'Jain University',
+        courseName: 'MBA in Information Technology Management',
+        duration: '2 years',
+        fees: '₹2,40,000',
+        category: 'Online MBA',
+        eligibility: '1. Pass in an Undergraduate (Bachelor) Program of a minimum duration of three (3) years in any stream from a UGC Recognized University<br>2. A minimum aggregate of 50% or an equivalent letter/ numerical grade.<br>3. A relaxation of 5% shall be given to SC/ST candidates.<br>Candidates who are in the final semester of the Bachelors Program are also eligible to apply.'
+    },
+    {
+        id: 12,
+        university: 'Jain University',
+        courseName: 'MBA in Entrepreneurship and Venture Creation',
+        duration: '2 years',
+        fees: '₹2,40,001',
+        category: 'Online MBA',
+        eligibility: '1. Pass in an Undergraduate (Bachelor) Program of a minimum duration of three (3) years in any stream from a UGC Recognized University<br>2. A minimum aggregate of 50% or an equivalent letter/ numerical grade.<br>3. A relaxation of 5% shall be given to SC/ST candidates.<br>Candidates who are in the final semester of the Bachelors Program are also eligible to apply.'
+    }
+];
 
     // Testimonials Data
     const testimonials = [

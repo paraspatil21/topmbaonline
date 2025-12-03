@@ -1160,6 +1160,18 @@ main {
     gap: 24px;
 }
 
+@media (min-width: 1024px) {
+    .genai-courses-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop for 12 items */
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .genai-courses-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+    }
+}
+
 .mba-square-card {
     background: white;
     border-radius: 16px;
@@ -2363,18 +2375,18 @@ img.university-logo-img {
         font-size: 0.7rem !important;
     }
     
-    /* 9. Get Started with MBA - 2x6 grid (NEW) - REPLACED FROM 3x3 */
-    .genai-courses-grid {
-        grid-template-columns: repeat(2, 1fr) !important; /* Changed from 3 to 2 */
-        gap: 0.75rem !important;
-    }
-    
-    .mba-square-card {
-        min-height: 380px !important; /* Increased height */
-        margin: 0 !important;
-        display: flex !important;
-        flex-direction: column !important;
-    }
+    /* 9. Get Started with MBA - 2x6 grid (UPDATED FOR 12 COURSES) */
+.genai-courses-grid {
+    grid-template-columns: repeat(2, 1fr) !important; /* 2 columns on mobile */
+    gap: 0.75rem !important;
+}
+
+.mba-square-card {
+    min-height: 380px !important; /* Increased height */
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
     
     .mba-card-header {
         padding: 1rem !important;
