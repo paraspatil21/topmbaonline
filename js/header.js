@@ -12,16 +12,16 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="flex items-center justify-between mb-3">
                             <!-- Logo -->
                             <div class="flex items-center space-x-1">
-                                <div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
-                                    <span class="text-white font-bold text-sm">TM</span>
+                                <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: #fabd05;">
+                                    <span class="font-bold text-sm" style="color: white;">TM</span>
                                 </div>
                                 <a href="/" class="text-base font-bold text-gray-800 whitespace-nowrap">
-                                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700">TopMBA</span>Online.in
+                                    <span style="color: #002c5c;">TopMBA</span><span style="color: #fabd05;">Online.in</span>
                                 </a>
                             </div>
                             
                             <!-- Sign Up Button (mobile) -->
-                            <button class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-3 py-1.5 rounded-lg text-xs font-medium hover:shadow-lg transition-all hover:from-blue-700 hover:to-blue-800 whitespace-nowrap">
+                            <button class="text-white px-3 py-1.5 rounded-lg text-xs font-medium hover:shadow-lg transition-all whitespace-nowrap" style="background: #002c5c;">
                                 Sign Up
                             </button>
                         </div>
@@ -43,11 +43,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="hidden md:flex items-center justify-between">
                         <!-- Logo -->
                         <div class="flex items-center space-x-2">
-                            <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
+                            <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: #fabd05;">
                                 <span class="text-white font-bold text-xl">TM</span>
                             </div>
                             <a href="/" class="text-2xl font-bold text-gray-800">
-                                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700">TopMBA</span>Online.in
+                                <span style="color: #002c5c;">TopMBA</span><span style="color: #fabd05;">Online.in</span>
                             </a>
                         </div>
                         
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <a href="#why-us" class="text-gray-700 hover:text-blue-600 font-medium">Why Us</a>
                             <a href="#testimonials" class="text-gray-700 hover:text-blue-600 font-medium">Testimonials</a>
                             <a href="#blogs" class="text-gray-700 hover:text-blue-600 font-medium">Blog</a>
-                            <button class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2 rounded-lg font-medium hover:shadow-lg transition-all hover:from-blue-700 hover:to-blue-800">
+                            <button class="text-white px-6 py-2 rounded-lg font-medium hover:shadow-lg transition-all" style="background: #002c5c;">
                                 Sign Up
                             </button>
                         </div>

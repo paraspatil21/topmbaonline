@@ -304,13 +304,46 @@ function initializeData() {
         }
     ];
 
+    // Why Choose Us Data (NEW CONTENT)
+    const whyChooseUsData = [
+        {
+            id: 1,
+            number: '01',
+            title: 'Personalized, Proven Guidance',
+            description: '97% say we made the right match, real guidance, never generic.',
+            icon: 'fa-user-check'
+        },
+        {
+            id: 2,
+            number: '02',
+            title: 'Accredited Universities, Expert Faculty',
+            description: 'Only top universities and expert faculty-no shortcuts.',
+            icon: 'fa-university'
+        },
+        {
+            id: 3,
+            number: '03',
+            title: 'End-to-End Support',
+            description: 'Full support, start to finish enrollment, classes, mentorship, placements.',
+            icon: 'fa-hands-helping'
+        },
+        {
+            id: 4,
+            number: '04',
+            title: 'Real Results is Reasonable',
+            description: '80%+ placements, ₹6.5L+ starting salary, 88% completion-affordable, with EMI options.',
+            icon: 'fa-chart-line'
+        }
+    ];
+
     // Store data globally
     window.appData = {
         universities,
         mbaSpecializations,
         mbaCourses,
         testimonials,
-        blogs
+        blogs,
+        whyChooseUsData
     };
 
     console.log('Data initialized successfully');
@@ -323,9 +356,41 @@ function renderAllComponents() {
     renderMBACourses();
     renderTestimonials();
     renderBlogs();
+    renderWhyChooseUs(); // NEW: Render Why Choose Us section
     
     // Optimize cards for mobile after rendering
     setTimeout(optimizeCardTextForMobile, 100);
+}
+
+// NEW: Render Why Choose Us section with 2x2 grid
+function renderWhyChooseUs() {
+    const featuresGrid = document.querySelector('.features-grid');
+    if (!featuresGrid || !window.appData.whyChooseUsData) return;
+    
+    featuresGrid.innerHTML = '';
+    
+    window.appData.whyChooseUsData.forEach(item => {
+        const featureCard = document.createElement('div');
+        featureCard.className = 'feature-card fade-in';
+        
+        featureCard.innerHTML = `
+            <div class="feature-icon" style="background: #fabd05;">
+                <i class="fas ${item.icon}" style="color: white;"></i>
+            </div>
+            <div class="text-center mb-2" style="font-size: 2rem; font-weight: 800; color: #002c5c;">
+                ${item.number}
+            </div>
+            <h3 class="feature-title" style="color: #002c5c;">${item.title}</h3>
+            <p class="feature-description">${item.description}</p>
+        `;
+        
+        featuresGrid.appendChild(featureCard);
+    });
+    
+    // Make sure the grid is 2x2
+    if (window.innerWidth >= 768) {
+        featuresGrid.style.gridTemplateColumns = 'repeat(2, 1fr)';
+    }
 }
 
 // NEW: University rendering function for the redesigned section
@@ -355,6 +420,11 @@ function renderUniversitiesNew() {
         img.alt = `${university.name} Logo`;
         img.loading = 'lazy';
         img.className = 'university-logo-img';
+        img.onerror = function() {
+            console.warn(`Logo not found: ${university.logoPath}. Using fallback.`);
+            this.style.display = 'none';
+            this.nextElementSibling.style.display = 'flex';
+        };
         
         // Create fallback div (hidden initially)
         const fallbackDiv = document.createElement('div');
@@ -372,7 +442,7 @@ function renderUniversitiesNew() {
         img.onload = function() {
             console.log(`Logo loaded successfully: ${university.logoPath}`);
             this.style.display = 'block';
-            fallbackDiv.style.display = 'none';
+            if (fallbackDiv) fallbackDiv.style.display = 'none';
         };
         
         // Add both image and fallback to container
@@ -398,7 +468,7 @@ function renderUniversitiesNew() {
     console.log('New universities rendered successfully');
 }
 
-// Banner Slider (same as before)
+// Banner Slider
 function initializeBannerSlider() {
     const banners = document.querySelectorAll('.hero-banner');
     const dots = document.querySelectorAll('.dot');
@@ -561,18 +631,18 @@ function renderFilteredMBACourses(courses) {
             <div class="mba-card-body">
                 <div class="mba-card-badges">
                     <span class="mba-badge level">
-                        <i class="fas fa-clock"></i>
+                        <i class="fas fa-clock" style="color: #fabd05;"></i>
                         ${course.duration}
                     </span>
                     <span class="mba-badge duration">
-                        <i class="fas fa-tag"></i>
+                        <i class="fas fa-tag" style="color: #fabd05;"></i>
                         ${course.category}
                     </span>
                 </div>
                 
                 <div class="mt-4 mb-6 p-4 bg-blue-50 rounded-lg border border-blue-100">
                     <h4 class="font-bold text-blue-800 mb-2 flex items-center">
-                        <i class="fas fa-graduation-cap mr-2"></i> Eligibility
+                        <i class="fas fa-graduation-cap mr-2" style="color: #fabd05;"></i> Eligibility
                     </h4>
                     <div class="text-sm text-gray-700 eligibility-content max-h-32 overflow-y-auto">
                         ${course.eligibility ? course.eligibility.replace(/\n/g, '<br>') : 'Check with university for eligibility criteria.'}
@@ -615,7 +685,7 @@ function initializeTestimonialSlider() {
                 <p>"${testimonial.content}"</p>
             </div>
             <div class="testimonial-author">
-                <div class="author-avatar">
+                <div class="author-avatar" style="background: #fabd05; color: #002c5c;">
                     <span>${testimonial.avatar}</span>
                 </div>
                 <div class="author-info">
@@ -719,14 +789,14 @@ function initializeCharts() {
             datasets: [{
                 data: [20, 18, 15, 12, 10, 8, 7, 10],
                 backgroundColor: [
-                    '#0ea5e9',
-                    '#f59e0b',
-                    '#ef4444',
-                    '#10b981',
-                    '#8b5cf6',
-                    '#06b6d4',
-                    '#ec4899',
-                    '#94a3b8'
+                    '#002c5c', // Business Analytics
+                    '#fabd05', // Digital Marketing
+                    '#ef4444', // Finance
+                    '#10b981', // Operations Management
+                    '#8b5cf6', // Data Science
+                    '#06b6d4', // HR Management
+                    '#ec4899', // Hospital Admin
+                    '#94a3b8'  // Others
                 ],
                 borderWidth: 3,
                 borderColor: '#ffffff',
@@ -757,7 +827,7 @@ function initializeCharts() {
                         backgroundColor: 'rgba(0, 0, 0, 0.8)',
                         titleColor: '#ffffff',
                         bodyColor: '#ffffff',
-                        borderColor: '#0ea5e9',
+                        borderColor: '#002c5c',
                         borderWidth: 1,
                         cornerRadius: 8,
                         callbacks: {
@@ -784,14 +854,14 @@ function initializeCharts() {
             datasets: [{
                 data: [20, 18, 15, 12, 10, 8, 7, 10],
                 backgroundColor: [
-                    '#0ea5e9',
-                    '#f59e0b',
-                    '#ef4444',
-                    '#10b981',
-                    '#8b5cf6',
-                    '#06b6d4',
-                    '#ec4899',
-                    '#94a3b8'
+                    '#002c5c', // Business Analytics
+                    '#fabd05', // Digital Marketing
+                    '#ef4444', // Finance
+                    '#10b981', // Operations
+                    '#8b5cf6', // Data Science
+                    '#06b6d4', // HR
+                    '#ec4899', // Hospital
+                    '#94a3b8'  // Others
                 ],
                 borderWidth: 2,
                 borderColor: '#ffffff'
@@ -813,7 +883,7 @@ function initializeCharts() {
                         backgroundColor: 'rgba(0, 0, 0, 0.8)',
                         titleColor: '#ffffff',
                         bodyColor: '#ffffff',
-                        borderColor: '#0ea5e9',
+                        borderColor: '#002c5c',
                         borderWidth: 1,
                         cornerRadius: 6
                     }
@@ -1025,22 +1095,21 @@ function renderMBASpecializations() {
     window.appData.mbaSpecializations.forEach(specialization => {
         const specCard = document.createElement('div');
         specCard.className = 'degree-card fade-in';
-        // Line ~485-495 in renderMBASpecializations function:
-// Line ~485-495 in renderMBASpecializations function:
-            specCard.innerHTML = `
-                <div class="degree-header">
-                    <div class="flex items-center gap-3">
-                        <i class="fas ${specialization.icon} text-2xl"></i>
-                        <h3 class="text-xl font-bold truncate-2-lines">${specialization.title}</h3>
-                    </div>
+        
+        specCard.innerHTML = `
+            <div class="degree-header">
+                <div class="flex items-center gap-3">
+                    <i class="fas ${specialization.icon} text-2xl" style="color: #fabd05;"></i>
+                    <h3 class="text-xl font-bold truncate-2-lines">${specialization.title}</h3>
                 </div>
-                <div class="degree-body">
-                    <p class="text-gray-600 mb-4 truncate-3-lines">${specialization.description}</p>
-                    <button class="compare-btn" data-specialization-id="${specialization.id}">
-                        <i class="fas fa-search"></i> Explore Programs
-                    </button>
-                </div>
-            `;
+            </div>
+            <div class="degree-body">
+                <p class="text-gray-600 mb-4 truncate-3-lines">${specialization.description}</p>
+                <button class="compare-btn" data-specialization-id="${specialization.id}" style="background: #002c5c;">
+                    <i class="fas fa-search" style="color: white;"></i> Explore Programs
+                </button>
+            </div>
+        `;
         specializationsGrid.appendChild(specCard);
     });
     
@@ -1071,18 +1140,18 @@ function renderMBACourses() {
             <div class="mba-card-body">
                 <div class="mba-card-badges">
                     <span class="mba-badge level">
-                        <i class="fas fa-clock"></i>
+                        <i class="fas fa-clock" style="color: #fabd05;"></i>
                         ${course.duration}
                     </span>
                     <span class="mba-badge duration">
-                        <i class="fas fa-tag"></i>
+                        <i class="fas fa-tag" style="color: #fabd05;"></i>
                         ${course.category}
                     </span>
                 </div>
                 
                 <div class="mt-4 mb-6 p-4 bg-blue-50 rounded-lg border border-blue-100">
                     <h4 class="font-bold text-blue-800 mb-2 flex items-center">
-                        <i class="fas fa-graduation-cap mr-2"></i> Eligibility
+                        <i class="fas fa-graduation-cap mr-2" style="color: #fabd05;"></i> Eligibility
                     </h4>
                     <div class="text-sm text-gray-700 eligibility-content max-h-32 overflow-y-auto">
                         ${course.eligibility ? course.eligibility.replace(/\n/g, '<br>') : 'Check with university for eligibility criteria.'}
@@ -1095,8 +1164,8 @@ function renderMBACourses() {
                 </div>
             </div>
             <div class="mba-card-footer">
-                <button class="mba-brochure-btn" data-course-id="${course.id}">
-                    <i class="fas fa-info-circle"></i> Get More Information
+                <button class="mba-brochure-btn" data-course-id="${course.id}" style="background: #002c5c; color: white;">
+                    <i class="fas fa-info-circle" style="color: white;"></i> Get More Information
                 </button>
             </div>
         `;
@@ -1123,7 +1192,7 @@ function renderBlogs() {
         blogCard.className = 'blog-card fade-in';
         blogCard.innerHTML = `
             <div class="blog-image">
-                <i class="fas fa-newspaper"></i>
+                <i class="fas fa-newspaper" style="color: white;"></i>
             </div>
             <div class="blog-content">
                 <div class="blog-meta">
@@ -1132,7 +1201,7 @@ function renderBlogs() {
                 </div>
                 <h3 class="text-xl font-bold mb-2 truncate-2-lines">${blog.title}</h3>
                 <p class="text-gray-600 truncate-2-lines">${blog.description}</p>
-                <a href="#" class="inline-block mt-4 text-blue-600 font-medium hover:text-blue-800">
+                <a href="#" class="inline-block mt-4 font-medium hover:text-blue-800" style="color: #fabd05;">
                     Read More <i class="fas fa-arrow-right ml-1"></i>
                 </a>
             </div>
@@ -1143,6 +1212,12 @@ function renderBlogs() {
 
 // Brochure Modal functionality
 function initializeBrochureModal() {
+    // Check if modal already exists
+    if (document.getElementById('brochure-modal')) {
+        console.log('Brochure modal already exists');
+        return;
+    }
+    
     const modalHTML = `
         <div id="brochure-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
             <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
@@ -1230,7 +1305,7 @@ function initializeBrochureModal() {
                         </div>
                     </div>
                     <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                        <button type="button" id="submit-brochure" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
+                        <button type="button" id="submit-brochure" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm" style="background: #002c5c;">
                             Get Brochure
                         </button>
                         <button type="button" id="close-modal" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
@@ -1381,7 +1456,7 @@ window.addEventListener('load', function() {
     
     // Check if universities rendered
     setTimeout(() => {
-        const universityCards = document.querySelectorAll('.university-card');
+        const universityCards = document.querySelectorAll('.university-card, .university-card-new');
         console.log(`Found ${universityCards.length} university cards`);
         
         universityCards.forEach((card, index) => {
@@ -1392,3 +1467,66 @@ window.addEventListener('load', function() {
         });
     }, 1000);
 });
+
+// Add CSS for touch overlays
+const touchOverlayCSS = `
+.card-touch-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 100;
+    padding: 20px;
+    border-radius: 16px;
+    display: none;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 44, 92, 0.3);
+}
+
+.card-touch-overlay.active {
+    display: block;
+}
+
+.close-overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #002c5c;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 101;
+}
+
+.truncate-2-lines {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.truncate-3-lines {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+`;
+
+// Add touch overlay styles to document
+if (!document.querySelector('#touch-overlay-styles')) {
+    const styleElement = document.createElement('style');
+    styleElement.id = 'touch-overlay-styles';
+    styleElement.textContent = touchOverlayCSS;
+    document.head.appendChild(styleElement);
+}
