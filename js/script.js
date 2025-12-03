@@ -1025,20 +1025,22 @@ function renderMBASpecializations() {
     window.appData.mbaSpecializations.forEach(specialization => {
         const specCard = document.createElement('div');
         specCard.className = 'degree-card fade-in';
-        specCard.innerHTML = `
-            <div class="degree-header">
-                <div class="flex items-center gap-3">
-                    <i class="fas ${specialization.icon} text-2xl"></i>
-                    <h3 class="text-xl font-bold truncate-2-lines">${specialization.title}</h3>
+        // Line ~485-495 in renderMBASpecializations function:
+// Line ~485-495 in renderMBASpecializations function:
+            specCard.innerHTML = `
+                <div class="degree-header">
+                    <div class="flex items-center gap-3">
+                        <i class="fas ${specialization.icon} text-2xl"></i>
+                        <h3 class="text-xl font-bold truncate-2-lines">${specialization.title}</h3>
+                    </div>
                 </div>
-            </div>
-            <div class="degree-body">
-                <p class="text-gray-600 mb-4 truncate-3-lines">${specialization.description}</p>
-                <button class="compare-btn" data-specialization-id="${specialization.id}">
-                    <i class="fas fa-search"></i> Explore Programs
-                </button>
-            </div>
-        `;
+                <div class="degree-body">
+                    <p class="text-gray-600 mb-4 truncate-3-lines">${specialization.description}</p>
+                    <button class="compare-btn" data-specialization-id="${specialization.id}">
+                        <i class="fas fa-search"></i> Explore Programs
+                    </button>
+                </div>
+            `;
         specializationsGrid.appendChild(specCard);
     });
     

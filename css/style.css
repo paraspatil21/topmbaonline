@@ -2152,39 +2152,88 @@ img.university-logo-img {
         line-height: 1.2 !important;
     }
     
-    /* 5. MBA Specializations - 4x2 grid */
+    /* 5. MBA Specializations - 2x4 grid (NEW) - REPLACED FROM 4x2 */
     .degrees-grid {
-        grid-template-columns: repeat(4, 1fr) !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* Changed from 4 to 2 */
         gap: 0.75rem !important;
         margin-top: 1rem !important;
     }
     
     .degree-card {
-        min-height: 200px !important;
+        min-height: 220px !important; /* Increased height for better visibility */
         margin: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
     }
     
     .degree-header {
         padding: 1rem !important;
+        min-height: 60px !important; /* Increased header height */
+        background: linear-gradient(to right, var(--primary), var(--secondary)) !important;
+    }
+    
+    .degree-header .flex.items-center.gap-3 {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+    
+    .degree-header i {
+        font-size: 1.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .degree-header h3 {
+        font-size: 0.85rem !important; /* Slightly larger font */
+        line-height: 1.3 !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        min-height: 2.6em !important;
+        color: white !important;
+        font-weight: 600 !important;
     }
     
     .degree-body {
         padding: 1rem !important;
-    }
-    
-    .degree-header h3 {
-        font-size: 0.9rem !important;
-        line-height: 1.2 !important;
+        flex-grow: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
     }
     
     .degree-body p {
-        font-size: 0.8rem !important;
-        line-height: 1.3 !important;
-        margin-bottom: 0.75rem !important;
+        font-size: 0.75rem !important; /* Slightly larger font */
+        line-height: 1.4 !important;
+        margin-bottom: 1rem !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 3 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        color: var(--gray) !important;
+        min-height: 4.2em !important; /* Ensures consistent height */
     }
     
     .compare-btn {
-        padding: 0.5rem !important;
+        padding: 0.6rem 0.5rem !important;
+        font-size: 0.75rem !important; /* Slightly larger font */
+        min-height: 36px !important; /* Taller button */
+        width: 100% !important;
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark)) !important;
+        color: white !important;
+        border-radius: 6px !important;
+        font-weight: 600 !important;
+        border: none !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 0.5rem !important;
+        margin-top: auto !important;
+    }
+    
+    .compare-btn i {
         font-size: 0.8rem !important;
     }
     
@@ -2302,49 +2351,133 @@ img.university-logo-img {
         font-size: 0.7rem !important;
     }
     
-    /* 9. Get Started with MBA - 3x3 grid */
+    /* 9. Get Started with MBA - 2x6 grid (NEW) - REPLACED FROM 3x3 */
     .genai-courses-grid {
-        grid-template-columns: repeat(3, 1fr) !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* Changed from 3 to 2 */
         gap: 0.75rem !important;
     }
     
     .mba-square-card {
-        min-height: 300px !important;
+        min-height: 380px !important; /* Increased height */
         margin: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
     }
     
-    .mba-card-header,
-    .mba-card-body,
-    .mba-card-footer {
-        padding: 0.75rem !important;
+    .mba-card-header {
+        padding: 1rem !important;
+        min-height: 70px !important;
     }
     
     .mba-card-title {
-        font-size: 0.9rem !important;
-        line-height: 1.2 !important;
+        font-size: 0.85rem !important; /* Slightly larger font */
+        line-height: 1.3 !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        margin-bottom: 0.5rem !important;
+        color: var(--dark) !important;
+        font-weight: 700 !important;
     }
     
     .mba-card-provider {
-        font-size: 0.75rem !important;
+        font-size: 0.7rem !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.25rem !important;
+        color: var(--primary) !important;
+    }
+    
+    .university-logo-small {
+        width: 24px !important;
+        height: 24px !important;
+        font-size: 0.7rem !important;
+        border-radius: 4px !important;
+    }
+    
+    .mba-card-body {
+        padding: 1rem !important;
+        flex-grow: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    .mba-card-badges {
+        display: flex !important;
+        gap: 0.5rem !important;
+        margin-bottom: 1rem !important;
+        flex-wrap: wrap !important;
     }
     
     .mba-badge {
-        padding: 0.25rem 0.5rem !important;
+        padding: 0.3rem 0.6rem !important;
         font-size: 0.65rem !important;
+        border-radius: 12px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 0.25rem !important;
+    }
+    
+    .mba-badge i {
+        font-size: 0.6rem !important;
     }
     
     .eligibility-content {
         font-size: 0.7rem !important;
-        max-height: 80px !important;
+        line-height: 1.4 !important;
+        max-height: 100px !important; /* Reduced height */
+        overflow-y: auto !important;
+        padding-right: 0.5rem !important;
+        margin-bottom: 1rem !important;
+        background-color: #f8fafc !important;
+        padding: 0.75rem !important;
+        border-radius: 8px !important;
+        border: 1px solid #e2e8f0 !important;
+    }
+    
+    .mba-card-price {
+        margin-top: auto !important;
+        padding-top: 1rem !important;
+        border-top: 1px dashed #e5e7eb !important;
     }
     
     .mba-price {
-        font-size: 1.1rem !important;
+        font-size: 1.25rem !important; /* Larger price font */
+        font-weight: 800 !important;
+        color: var(--dark) !important;
+        margin-bottom: 0.25rem !important;
     }
     
-    .mba-compare-btn,
-    .mba-brochure-btn {
-        padding: 0.5rem !important;
+    .mba-price-note {
+        font-size: 0.7rem !important;
+        color: var(--gray) !important;
+    }
+    
+    .mba-card-footer {
+        padding: 0 1rem 1rem !important;
+    }
+    
+    .mba-brochure-btn,
+    .mba-compare-btn {
+        padding: 0.75rem 0.5rem !important; /* Taller button */
+        font-size: 0.75rem !important; /* Slightly larger font */
+        min-height: 40px !important;
+        width: 100% !important;
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark)) !important;
+        color: white !important;
+        border-radius: 8px !important;
+        font-weight: 600 !important;
+        border: none !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 0.5rem !important;
+    }
+    
+    .mba-brochure-btn i,
+    .mba-compare-btn i {
         font-size: 0.8rem !important;
     }
     
@@ -2665,13 +2798,22 @@ img.university-logo-img {
         font-size: 0.65rem !important;
     }
     
-    /* 5. MBA Specializations */
-    .degrees-grid {
-        gap: 0.5rem !important;
+    /* 5. MBA Specializations - Adjust for very small screens */
+    .degree-card {
+        min-height: 200px !important;
     }
     
-    .degree-card {
-        min-height: 180px !important;
+    .degree-header h3 {
+        font-size: 0.8rem !important;
+    }
+    
+    .degree-body p {
+        font-size: 0.7rem !important;
+    }
+    
+    .compare-btn {
+        padding: 0.5rem !important;
+        font-size: 0.7rem !important;
     }
     
     /* 6. Why We're Best - feature cards */
@@ -2685,13 +2827,31 @@ img.university-logo-img {
         padding: 0.75rem !important;
     }
     
-    /* 9. MBA Courses */
+    /* 9. MBA Courses - Adjust for very small screens */
     .genai-courses-grid {
         gap: 0.5rem !important;
     }
     
     .mba-square-card {
-        min-height: 280px !important;
+        min-height: 360px !important;
+    }
+    
+    .mba-card-title {
+        font-size: 0.8rem !important;
+    }
+    
+    .eligibility-content {
+        font-size: 0.65rem !important;
+        max-height: 90px !important;
+    }
+    
+    .mba-price {
+        font-size: 1.1rem !important;
+    }
+    
+    .mba-brochure-btn {
+        font-size: 0.7rem !important;
+        padding: 0.6rem !important;
     }
     
     /* 11. Blogs */
@@ -2792,7 +2952,6 @@ img.university-logo-img {
         font-size: 1.5rem !important;
     }
 }
-
 
 /* Text truncation utilities */
 .truncate-2-lines {
