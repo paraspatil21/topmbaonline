@@ -11,11 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         <!-- Top Row - Company Info -->
                         <div class="mb-6">
                             <div class="flex items-center justify-center space-x-2 mb-4">
-                                <div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
+                                <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: #fabd05;">
                                     <span class="text-white font-bold text-lg">TM</span>
                                 </div>
                                 <h2 class="text-xl font-bold">
-                                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-300">TopMBA</span>Online.in
+                                    <span style="color: #002c5c;">TopMBA</span><span style="color: #fabd05;">Online.in</span>
                                 </h2>
                             </div>
                             <p class="text-gray-400 text-center text-sm mb-4">
@@ -34,17 +34,17 @@ document.addEventListener('DOMContentLoaded', function() {
                             </div>
                             
                             <div class="flex justify-center space-x-3 mb-6">
-                                <a href="#" class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
-                                    <i class="fab fa-facebook-f text-sm"></i>
+                                <a href="#" class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-600 transition-colors">
+                                    <i class="fab fa-facebook-f text-sm" style="color: #fabd05;"></i>
                                 </a>
-                                <a href="#" class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
-                                    <i class="fab fa-twitter text-sm"></i>
+                                <a href="#" class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-600 transition-colors">
+                                    <i class="fab fa-x text-sm" style="color: #fabd05;"></i>
                                 </a>
-                                <a href="#" class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
-                                    <i class="fab fa-linkedin-in text-sm"></i>
+                                <a href="#" class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-600 transition-colors">
+                                    <i class="fab fa-linkedin-in text-sm" style="color: #fabd05;"></i>
                                 </a>
-                                <a href="#" class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
-                                    <i class="fab fa-instagram text-sm"></i>
+                                <a href="#" class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-600 transition-colors">
+                                    <i class="fab fa-instagram text-sm" style="color: #fabd05;"></i>
                                 </a>
                             </div>
                         </div>
@@ -110,11 +110,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             <!-- Company Info -->
                             <div class="lg:col-span-2">
                                 <div class="flex items-center space-x-2 mb-4">
-                                    <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
+                                    <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: #fabd05;">
                                         <span class="text-white font-bold text-xl">TM</span>
                                     </div>
                                     <h2 class="text-2xl font-bold">
-                                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-300">TopMBA</span>Online.in
+                                        <span style="color: #002c5c;">TopMBA</span><span style="color: #fabd05;">Online.in</span>
                                     </h2>
                                 </div>
                                 <p class="text-gray-400 mb-6">
@@ -133,17 +133,17 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </a>
                                 </div>
                                 <div class="flex space-x-4">
-                                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
-                                        <i class="fab fa-facebook-f"></i>
+                                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-600 transition-colors">
+                                        <i class="fab fa-facebook-f" style="color: #fabd05;"></i>
                                     </a>
-                                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
-                                        <i class="fab fa-twitter"></i>
+                                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-600 transition-colors">
+                                        <i class="fab fa-x" style="color: #fabd05;"></i>
                                     </a>
-                                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
-                                        <i class="fab fa-linkedin-in"></i>
+                                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-600 transition-colors">
+                                        <i class="fab fa-linkedin-in" style="color: #fabd05;"></i>
                                     </a>
-                                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
-                                        <i class="fab fa-instagram"></i>
+                                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-600 transition-colors">
+                                        <i class="fab fa-instagram" style="color: #fabd05;"></i>
                                     </a>
                                 </div>
                             </div>

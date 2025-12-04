@@ -273,6 +273,16 @@ main {
     background: rgba(255, 255, 255, 0.3);
 }
 
+/* Additional style for yellow buttons - ADDED FROM FIRST FILE */
+.compare-btn:hover,
+.mba-brochure-btn:hover,
+.newsletter-btn:hover,
+.banner-nav:hover,
+.testimonial-nav:hover {
+    background: #d9a404 !important; /* Darker yellow for hover */
+    color: #002c5c !important;
+}
+
 .banner-nav.prev {
     left: 2rem;
 }
@@ -1688,6 +1698,15 @@ img.university-logo-img {
 
 .notification.info {
     background-color: #002c5c; /* CHANGED from #3b82f6 to #002c5c */
+}
+
+/* Ensure social media icons maintain yellow color - ADDED FROM FIRST FILE */
+.bg-gray-800 .fab {
+    color: #fabd05 !important;
+}
+
+.bg-gray-800:hover .fab {
+    color: white !important;
 }
 
 /* Responsive Design */
